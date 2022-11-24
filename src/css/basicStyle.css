@@ -1,0 +1,84 @@
+/* Estilos que no son muy importantes */
+
+/* Separacion entre los checkbox */
+.checkSeparation {
+    margin-top: 5px;
+}
+
+.ant-modal-title {
+    text-align: center !important;
+    margin-right: 12px !important;
+    margin-bottom: 0 !important;
+    color: rgba(0, 0, 0, 0.85) !important;
+    font-weight: 600 !important;
+    font-size: 20px !important;
+    line-height: 32px !important;
+    overflow: hidden !important;
+    white-space: nowrap !important;
+    text-overflow: ellipsis !important;
+}
+
+.d-none {
+    display: none;
+}
+
+.ant-menu {
+    /* float: right; */
+    /* float: none; */
+    /* float: left; */
+}
+
+.sesion {
+    float: right;
+}
+.spikes {
+    position: relative;
+    background: #001529;
+    height: 9vh;
+}
+
+.spikes::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    left: -0%;
+    top: 100%;
+    z-index: 10;
+    display: block;
+    height: 50px;
+    background-size: 50px 100%;
+    background-image: linear-gradient(135deg, #001529 25%, transparent 25%),
+        linear-gradient(225deg, #001529 25%, transparent 25%);
+    background-position: 0 0;
+}
+
+.middle-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 300px;
+    height: 200px;
+    z-index: 15;
+    top: 50%;
+    left: 50%;
+    margin: -100px 0 0 -150px;
+}
+
+.site-layout-content {
+    min-height: 580px;
+    padding: 24px;
+    background: #fff;
+    /* border: solid red 2px; */
+}
+#components-layout-demo-top .logo {
+    float: left;
+    width: 120px;
+    height: 31px;
+    margin: 16px 24px 16px 0;
+    background: rgba(255, 255, 255, 0.3);
+}
+.ant-row-rtl #components-layout-demo-top .logo {
+    float: right;
+    margin: 16px 0 16px 24px;
+}
