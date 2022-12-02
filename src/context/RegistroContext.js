@@ -16,7 +16,7 @@ import getUserFromLocalStorage from '../helpers/getUserFromLocalStorage';
 export const RegistroContext = createContext();
 
 const client = axios.create({
-    baseURL: 'http://localhost:8080/',
+    baseURL: process.env.REACT_APP_API_BASE_URL,
 });
 
 export const RegistroContextProvider = (props) => {
@@ -48,7 +48,7 @@ export const RegistroContextProvider = (props) => {
 
     const obtenerRegistro = async () => {
         try {
-            const user = getUserFromLocalStorage()
+            const user = getUserFromLocalStorage();
 
             const resultado = await client.get('/consultarDatosClasificacion/' + user.id);
             dispatch({ type: OBTENER_REGISTRO, payload: resultado.data });

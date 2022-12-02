@@ -1,10 +1,12 @@
 import React, { useContext, useState } from 'react';
-import { Col, Layout, Row, Button } from 'antd';
+import { Col, Layout, Row, Button, Typography, Card } from 'antd';
 
 import { DatePicker, Space } from 'antd';
 import { VictoryBar, VictoryChart, VictoryAxis } from 'victory';
 import alertTopEnd from '../../helpers/alertTopEnd';
 import { DashboardContext } from '../../context/DashboardContext';
+import '../../css/basicStyle.css';
+const { Title } = Typography;
 
 const { Header, Content, Footer } = Layout;
 const data = [
@@ -61,37 +63,45 @@ export const GraficaIncidenciasByWeek = () => {
 
     return (
         <>
-            <Layout className='layout'>
-                <Content
+
+            <div className='site-card-border-less-wrapper'>
+                <Card
+                    bordered={false}
                     style={{
-                        padding: '10px 100px',
+                        width: 400,
                     }}
                 >
-                    <Row>
-                        <Col
-                            style={{
-                                padding: 10,
-                                minWidth: 300,
-                            }}
+                    <center>
+                        <Title level={4}>Incidencias</Title>
+                        <p>
+                            Seleccion una semana para ver las incidencias registradas
+                            durante esa semana
+                        </p>
+
+                        <DatePicker
+                            onChange={onChange}
+                            picker='week'
+                            placeholder='Selecciona la semana'
+                        />
+                        <Button
+                            type='primary'
+                            loading={loadings}
+                            onClick={() => enterLoading()}
                         >
-                            <DatePicker onChange={onChange} picker='week' />
-                            <Button
-                                type='primary'
-                                loading={loadings}
-                                onClick={() => enterLoading()}
-                            >
-                                Click me!
-                            </Button>
-                        </Col>
-                        <Col>
+                            Buscar
+                        </Button>
+
+                        {incidencias === null ? (
+                            ''
+                        ) : (
                             <VictoryChart
                                 // domainPadding will add space to each side of VictoryBar to
                                 // prevent it from overlapping the axis
                                 domainPadding={20}
                             >
                                 <VictoryAxis
-                                    // tickValues specifies both the number of ticks and where
-                                    // they are placed on the axis
+                                // tickValues specifies both the number of ticks and where
+                                // they are placed on the axis
                                 />
                                 <VictoryAxis
                                     dependentAxis
@@ -100,10 +110,10 @@ export const GraficaIncidenciasByWeek = () => {
                                 />
                                 <VictoryBar data={incidencias} x='dia' y='data' />
                             </VictoryChart>
-                        </Col>
-                    </Row>
-                </Content>
-            </Layout>
+                        )}
+                    </center>
+                </Card>
+            </div>
         </>
     );
 };

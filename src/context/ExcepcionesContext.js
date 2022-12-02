@@ -15,7 +15,7 @@ import alertTopEnd from '../helpers/alertTopEnd';
 import getUserFromLocalStorage from '../helpers/getUserFromLocalStorage';
 
 const client = axios.create({
-    baseURL: 'http://localhost:8080/',
+    baseURL: process.env.REACT_APP_API_BASE_URL,
 });
 
 export const ExcepcionesContext = createContext();

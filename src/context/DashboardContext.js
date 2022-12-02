@@ -17,7 +17,7 @@ import getUserFromLocalStorage from '../helpers/getUserFromLocalStorage';
 
 export const DashboardContext = createContext();
 const client = axios.create({
-    baseURL: 'http://localhost:8080/',
+    baseURL: process.env.REACT_APP_API_BASE_URL,
 });
 
 export const DashboardContextProvider = (props) => {
