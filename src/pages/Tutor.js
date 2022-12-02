@@ -24,6 +24,8 @@ import '../css/basicStyle.css';
 
 import { LoadingOutlined } from '@ant-design/icons';
 import setGreet from '../helpers/setGreet';
+import { GraficaIncidenciasByWeek } from '../components/Tutor/GraficaIncidenciasByWeek';
+import { DashboardContextProvider } from '../context/DashboardContext';
 const { Header, Content, Footer } = Layout;
 const { Title } = Typography;
 
@@ -171,6 +173,9 @@ export const Tutor = () => {
                     </Row>
                 </Content>
             </Layout>
+            <DashboardContextProvider>
+                <GraficaIncidenciasByWeek></GraficaIncidenciasByWeek>
+            </DashboardContextProvider>
         </>
     );
 };
