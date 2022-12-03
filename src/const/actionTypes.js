@@ -27,3 +27,4 @@ export const NO_PERMITIDA_ACTUAL = 'NO_PERMITIDA_ACTUAL';
 
 // Acciones para el Dashboard
 export const SET_INCIDECIAS_BY_WEEK = 'SET_INCIDECIAS_BY_WEEK';
+export const SET__TIPO_INCIDECIAS_BY_DAY = 'SET__TIPO_INCIDECIAS_BY_DAY';

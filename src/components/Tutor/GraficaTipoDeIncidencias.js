@@ -1,18 +1,20 @@
 import React, { useContext, useState } from 'react';
 import { Col, Layout, Row, Button, Typography, Card } from 'antd';
+import dayjs from 'dayjs';
 
 import { DatePicker, Space } from 'antd';
 import { VictoryBar, VictoryChart, VictoryAxis } from 'victory';
 import alertTopEnd from '../../helpers/alertTopEnd';
 import { DashboardContext } from '../../context/DashboardContext';
 import '../../css/basicStyle.css';
-import { FileSearchOutlined, FrownOutlined } from '@ant-design/icons';
+import { BarChartOutlined } from '@ant-design/icons';
 const { Title } = Typography;
 
 const { Header, Content, Footer } = Layout;
 
-export const GraficaIncidenciasByWeek = () => {
-    const { incidencias, getIncidencias } = useContext(DashboardContext);
+export const GraficaTipoDeIncidencias = () => {
+    const { tipoDeIncidencias, getTipoDeIncidenciasPorDia } =
+        useContext(DashboardContext);
 
     const [inicial, setIncial] = useState(null);
     const [final, setFinal] = useState(null);
@@ -28,7 +30,7 @@ export const GraficaIncidenciasByWeek = () => {
             );
         } else {
             setLoadings(true);
-            getIncidencias(inicial, final);
+            getTipoDeIncidenciasPorDia(inicial, final);
             setTimeout(() => {
                 setLoadings(false);
             }, 1000);
@@ -42,15 +44,14 @@ export const GraficaIncidenciasByWeek = () => {
     };
 
     const onChange = (date, dateString) => {
+        console.log(date, dateString);
+
         if (dateString === '') {
             setIncial(null);
             setFinal(null);
         } else {
-            let curr = new Date(date._d);
-            let first = curr.getDate() - curr.getDay();
-            let firstday = new Date(curr.setDate(first));
-            let lastday = addDays(firstday, 6);
-
+            let firstday = new Date(date._d);
+            let lastday = addDays(firstday, 1);
             setIncial(firstday);
             setFinal(lastday);
         }
@@ -67,16 +68,17 @@ export const GraficaIncidenciasByWeek = () => {
                     }}
                 >
                     <center>
-                        <Title level={4}>Incidencias</Title>
+                        <Title level={4}>Tipo de Incidencias</Title>
                         <p>
-                            Seleccion una semana para ver las incidencias registradas
-                            durante esa semana
+                            Seleccion la fecha para ver el tipo de incidencias registradas
+                            durante ese dia. Para revisar en profunidad estas incidencias
+                            debe ingresar al registro y revisar el registro usando los
+                            filtros para la fecha.
                         </p>
 
                         <DatePicker
                             onChange={onChange}
-                            picker='week'
-                            placeholder='Selecciona la semana'
+                            placeholder='Selecciona la fecha'
                         />
                         <Button
                             type='primary'
@@ -86,11 +88,11 @@ export const GraficaIncidenciasByWeek = () => {
                             Buscar
                         </Button>
 
-                        {incidencias === null ? (
-                            <div className='middle-center'>
+                        {tipoDeIncidencias === null ? (
+                            <div className=''>
                                 <center>
-                                    <Title level={5}>Buscar Incidencias por semana</Title>
-                                    <FileSearchOutlined
+                                    <Title level={5}>Buscar Tipo de Incidencias</Title>
+                                    <BarChartOutlined
                                         style={{
                                             fontSize: '100px',
                                             color: '#08c',
@@ -114,7 +116,7 @@ export const GraficaIncidenciasByWeek = () => {
                                     // tickFormat specifies how ticks should be displayed
                                     tickFormat={(x) => `${x}`}
                                 />
-                                <VictoryBar data={incidencias} x='dia' y='data' />
+                                <VictoryBar data={tipoDeIncidencias} x='dia' y='data' />
                             </VictoryChart>
                         )}
                     </center>

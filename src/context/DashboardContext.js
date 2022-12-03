@@ -3,13 +3,8 @@ import DashboardReducer from '../reducer/DashboardReducer';
 import axios from 'axios';
 
 import {
-    SET_ESTADO_EXTENSION,
     SET_INCIDECIAS_BY_WEEK,
-    SET_INCIDECIAS_TUTOR,
-    SET_TOKEN,
-    SET_TUTOR,
-    SET_USER,
-    UPDATE_CONFIG,
+    SET__TIPO_INCIDECIAS_BY_DAY,
 } from '../const/actionTypes';
 import alertTopEnd from '../helpers/alertTopEnd';
 import getTokenFromLocalStorage from '../helpers/getTokenFromLocalStorage';
@@ -25,6 +20,7 @@ export const DashboardContextProvider = (props) => {
         token: null,
         user: null,
         incidencias: null,
+        tipoDeIncidencias: null,
     };
 
     const [state, dispatch] = useReducer(DashboardReducer, initialState);
@@ -47,24 +43,46 @@ export const DashboardContextProvider = (props) => {
         return aux;
     };
 
+    const setDataOnTipoDeIncidencias = (data) => {
+        let aux = [];
+        aux.push({ dia: 'vulgar', data: data[0] });
+        aux.push({ dia: 'agresivo', data: data[1] });
+        aux.push({ dia: 'ofensivo', data: data[2] });
+        return aux;
+    };
+
     const getIncidencias = async (fecha_inicial, fecha_final) => {
         try {
             let idTutor = getUserFromLocalStorage().id;
             let inicial = setDateFormat(fecha_inicial);
             let final = setDateFormat(fecha_final);
 
-            console.log(idTutor);
-            console.log(inicial);
-            console.log(final);
             const resultado = await client.get(
                 `/getIncidenciasByWeek/${idTutor}/${inicial}/${final}`
             );
 
-            console.log(resultado.data);
-            console.log(setDataOnWeeks(resultado.data));
             dispatch({
                 type: SET_INCIDECIAS_BY_WEEK,
                 payload: setDataOnWeeks(resultado.data),
+            });
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    const getTipoDeIncidenciasPorDia = async (fecha_inicial, fecha_final) => {
+        try {
+            let idTutor = getUserFromLocalStorage().id;
+            let inicial = setDateFormat(fecha_inicial);
+            let final = setDateFormat(fecha_final);
+
+            const resultado = await client.get(
+                `/getTiposIncidencias/${idTutor}/${inicial}/${final}`
+            );
+
+            dispatch({
+                type: SET__TIPO_INCIDECIAS_BY_DAY,
+                payload: setDataOnTipoDeIncidencias(resultado.data),
             });
         } catch (error) {
             console.error(error);
@@ -77,7 +95,9 @@ export const DashboardContextProvider = (props) => {
                 token: state.token,
                 user: state.user,
                 incidencias: state.incidencias,
+                tipoDeIncidencias: state.tipoDeIncidencias,
                 getIncidencias,
+                getTipoDeIncidenciasPorDia,
             }}
         >
             {props.children}

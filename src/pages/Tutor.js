@@ -26,6 +26,7 @@ import { LoadingOutlined } from '@ant-design/icons';
 import setGreet from '../helpers/setGreet';
 import { GraficaIncidenciasByWeek } from '../components/Tutor/GraficaIncidenciasByWeek';
 import { DashboardContextProvider } from '../context/DashboardContext';
+import { GraficaTipoDeIncidencias } from '../components/Tutor/GraficaTipoDeIncidencias';
 const { Header, Content, Footer } = Layout;
 const { Title } = Typography;
 
@@ -174,7 +175,32 @@ export const Tutor = () => {
                 </Content>
             </Layout>
             <DashboardContextProvider>
-                <GraficaIncidenciasByWeek></GraficaIncidenciasByWeek>
+                <Layout>
+                    <Content>
+                        <Row>
+                            <Col
+                                style={{
+                                    padding: 10,
+                                }}
+                            >
+                                <GraficaIncidenciasByWeek />
+                            </Col>
+                            <Col
+                                style={{
+                                    padding: 10,
+                                }}
+                            >
+                                <GraficaTipoDeIncidencias />
+                            </Col>
+                            <Col
+                                style={{
+                                    padding: 10,
+                                }}
+                            >
+                            </Col>
+                        </Row>
+                    </Content>
+                </Layout>
             </DashboardContextProvider>
         </>
     );
