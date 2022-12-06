@@ -8,17 +8,17 @@ import alertTopEnd from '../../helpers/alertTopEnd';
 import { DashboardContext } from '../../context/DashboardContext';
 import '../../css/basicStyle.css';
 import { BarChartOutlined } from '@ant-design/icons';
+import GraficaNoPermitidas from './GraficaNoPermitidas';
 const { Title } = Typography;
 
 const { Header, Content, Footer } = Layout;
 
-export const GraficaNoPermitidasByWeek = () => {
-    const { tipoDeIncidencias, getSitiosNoPermitidos } = useContext(DashboardContext);
+export const NoPermitidasPorSemana = () => {
+    const { noPermitidas, getSitiosNoPermitidos } = useContext(DashboardContext);
 
     const [inicial, setIncial] = useState(null);
     const [final, setFinal] = useState(null);
-
-    const [loadings, setLoadings] = useState(false);
+    const [data, setData] = useState(null);
 
     const enterLoading = () => {
         if (inicial === null || final === null) {
@@ -28,10 +28,9 @@ export const GraficaNoPermitidasByWeek = () => {
                 'Seleccione las fechas que desea buscar'
             );
         } else {
-            setLoadings(true);
             getSitiosNoPermitidos(inicial, final);
             setTimeout(() => {
-                setLoadings(false);
+                setData(noPermitidas);
             }, 1000);
         }
     };
@@ -49,14 +48,8 @@ export const GraficaNoPermitidasByWeek = () => {
             setIncial(null);
             setFinal(null);
         } else {
-            let curr = new Date(date._d);
-            let first = curr.getDate() - curr.getDay();
-            let firstday = new Date(curr.setDate(first));
-            let lastday = addDays(firstday, 6);
-
-            console.log(firstday);
-            console.log(lastday);
-
+            let firstday = new Date(date._d);
+            let lastday = addDays(firstday, 1);
             setIncial(firstday);
             setFinal(lastday);
         }
@@ -68,7 +61,7 @@ export const GraficaNoPermitidasByWeek = () => {
                 <Card
                     bordered={false}
                     style={{
-                        width: 400,
+                        width: 800,
                         minHeight: 500,
                     }}
                 >
@@ -83,18 +76,13 @@ export const GraficaNoPermitidasByWeek = () => {
 
                         <DatePicker
                             onChange={onChange}
-                            picker='week'
                             placeholder='Selecciona la fecha'
                         />
-                        <Button
-                            type='primary'
-                            loading={loadings}
-                            onClick={() => enterLoading()}
-                        >
+                        <Button type='primary' onClick={() => enterLoading()}>
                             Buscar
                         </Button>
 
-                        {tipoDeIncidencias === null ? (
+                        {data === null ? (
                             <div className=''>
                                 <center>
                                     <Title level={5}>Buscar Tipo de Incidencias</Title>
@@ -108,22 +96,7 @@ export const GraficaNoPermitidasByWeek = () => {
                                 </center>
                             </div>
                         ) : (
-                            <VictoryChart
-                                // domainPadding will add space to each side of VictoryBar to
-                                // prevent it from overlapping the axis
-                                domainPadding={20}
-                            >
-                                <VictoryAxis
-                                // tickValues specifies both the number of ticks and where
-                                // they are placed on the axis
-                                />
-                                <VictoryAxis
-                                    dependentAxis
-                                    // tickFormat specifies how ticks should be displayed
-                                    tickFormat={(x) => `${x}`}
-                                />
-                                <VictoryBar data={tipoDeIncidencias} x='dia' y='data' />
-                            </VictoryChart>
+                            new GraficaNoPermitidas(data).render()
                         )}
                     </center>
                 </Card>

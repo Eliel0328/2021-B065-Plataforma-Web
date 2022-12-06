@@ -1,5 +1,6 @@
 import {
     SET_INCIDECIAS_BY_WEEK,
+    SET_NO_PERMITIDAS,
     SET__TIPO_INCIDECIAS_BY_DAY,
 } from '../const/actionTypes';
 
@@ -14,6 +15,11 @@ export default (state, action) => {
             return {
                 ...state,
                 tipoDeIncidencias: action.payload,
+            };
+        case SET_NO_PERMITIDAS:
+            return {
+                ...state,
+                noPermitidas: action.payload,
             };
         default:
             return state;
