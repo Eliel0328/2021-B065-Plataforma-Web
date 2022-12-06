@@ -51,11 +51,15 @@ export const DashboardContextProvider = (props) => {
     };
 
     const setDataOnTipoDeIncidencias = (data) => {
-        let aux = [];
-        aux.push({ dia: 'vulgar', data: data[0] });
-        aux.push({ dia: 'agresivo', data: data[1] });
-        aux.push({ dia: 'ofensivo', data: data[2] });
-        return aux;
+        if (data.length < 3) {
+            let diff = 3 - data.length;
+            for (let i = 0; i < diff; ++i) {
+                data.push(0);
+            }
+        }
+        let aux = ['Vulgar', 'Agresivo', 'Ofensivo'];
+
+        return { etiquetas: aux, data };
     };
 
     const getIncidencias = async (fecha_inicial, fecha_final) => {

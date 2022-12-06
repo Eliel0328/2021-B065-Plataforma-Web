@@ -8,18 +8,18 @@ import alertTopEnd from '../../helpers/alertTopEnd';
 import { DashboardContext } from '../../context/DashboardContext';
 import '../../css/basicStyle.css';
 import { BarChartOutlined } from '@ant-design/icons';
+import GraficaTipoIncidencias from './GraficaTipoIncidencias';
 const { Title } = Typography;
 
 const { Header, Content, Footer } = Layout;
 
-export const GraficaTipoDeIncidencias = () => {
+export const TipoIncidencias = () => {
     const { tipoDeIncidencias, getTipoDeIncidenciasPorDia } =
         useContext(DashboardContext);
 
     const [inicial, setIncial] = useState(null);
     const [final, setFinal] = useState(null);
-
-    const [loadings, setLoadings] = useState(false);
+    const [data, setData] = useState(null);
 
     const enterLoading = () => {
         if (inicial === null || final === null) {
@@ -29,10 +29,9 @@ export const GraficaTipoDeIncidencias = () => {
                 'Seleccione las fechas que desea buscar'
             );
         } else {
-            setLoadings(true);
             getTipoDeIncidenciasPorDia(inicial, final);
             setTimeout(() => {
-                setLoadings(false);
+                setData(tipoDeIncidencias);
             }, 1000);
         }
     };
@@ -63,7 +62,7 @@ export const GraficaTipoDeIncidencias = () => {
                 <Card
                     bordered={false}
                     style={{
-                        width: 400,
+                        width: 800,
                         minHeight: 500,
                     }}
                 >
@@ -80,18 +79,14 @@ export const GraficaTipoDeIncidencias = () => {
                             onChange={onChange}
                             placeholder='Selecciona la fecha'
                         />
-                        <Button
-                            type='primary'
-                            loading={loadings}
-                            onClick={() => enterLoading()}
-                        >
+                        <Button type='primary' onClick={() => enterLoading()}>
                             Buscar
                         </Button>
 
-                        {tipoDeIncidencias === null ? (
-                            <div className=''>
+                        {data === null ? (
+                            <div className='middle-center'>
                                 <center>
-                                    <Title level={5}>Buscar Tipo de Incidencias</Title>
+                                    <Title level={5}>Buscar Incidencias por semana</Title>
                                     <BarChartOutlined
                                         style={{
                                             fontSize: '100px',
@@ -102,22 +97,7 @@ export const GraficaTipoDeIncidencias = () => {
                                 </center>
                             </div>
                         ) : (
-                            <VictoryChart
-                                // domainPadding will add space to each side of VictoryBar to
-                                // prevent it from overlapping the axis
-                                domainPadding={20}
-                            >
-                                <VictoryAxis
-                                // tickValues specifies both the number of ticks and where
-                                // they are placed on the axis
-                                />
-                                <VictoryAxis
-                                    dependentAxis
-                                    // tickFormat specifies how ticks should be displayed
-                                    tickFormat={(x) => `${x}`}
-                                />
-                                <VictoryBar data={tipoDeIncidencias} x='dia' y='data' />
-                            </VictoryChart>
+                            new GraficaTipoIncidencias(data).render()
                         )}
                     </center>
                 </Card>
