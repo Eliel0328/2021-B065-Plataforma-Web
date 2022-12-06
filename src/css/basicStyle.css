@@ -65,6 +65,12 @@
     margin: -100px 0 0 -150px;
 }
 
+.middle-center-2 {
+    margin: auto;
+    width: 850px;
+    padding: 10px;
+}
+
 .site-layout-content {
     min-height: 580px;
     padding: 24px;
@@ -82,3 +88,13 @@
     float: right;
     margin: 16px 0 16px 24px;
 }
+
+.site-card-border-less-wrapper{
+    margin: auto;
+    width: 100%;
+    padding: 10px;
+}
+
+/* .swal2-container {
+    z-index: 1600;
+} */

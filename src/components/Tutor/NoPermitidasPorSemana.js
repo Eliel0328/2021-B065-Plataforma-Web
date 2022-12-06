@@ -60,6 +60,7 @@ export const NoPermitidasPorSemana = () => {
             <div className='site-card-border-less-wrapper'>
                 <Card
                     bordered={false}
+                    hoverable={true}
                     style={{
                         width: 800,
                         minHeight: 500,

@@ -4,7 +4,6 @@ import Chart from 'react-apexcharts';
 class GraficaNoPermitidas extends Component {
     constructor(props) {
         super(props);
-        console.log(props);
 
         this.state = {
             options: {
@@ -23,7 +22,7 @@ class GraficaNoPermitidas extends Component {
                         },
                     },
                 },
-                colors:this.props.colores,
+                colors: this.props.colores,
                 dataLabels: {
                     enabled: true,
                     textAnchor: 'start',
@@ -49,15 +48,6 @@ class GraficaNoPermitidas extends Component {
                     labels: {
                         show: false,
                     },
-                },
-                title: {
-                    text: 'Custom DataLabels',
-                    align: 'center',
-                    floating: true,
-                },
-                subtitle: {
-                    text: 'Category Names as DataLabels inside bars',
-                    align: 'center',
                 },
                 tooltip: {
                     theme: 'dark',

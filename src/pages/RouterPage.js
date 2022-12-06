@@ -109,7 +109,7 @@ const RouterPage = () => {
                     <Header
                         style={{
                             position: 'fixed',
-                            zIndex: 10000,
+                            zIndex: 1000,
                             width: '100%',
                         }}
                     >

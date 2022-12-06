@@ -62,7 +62,8 @@ export const IncidenciasPorSemana = () => {
         <>
             <div className='site-card-border-less-wrapper'>
                 <Card
-                    bordered={false}
+                    bordered={true}
+                    hoverable={true}
                     style={{
                         width: 800,
                         minHeight: 500,

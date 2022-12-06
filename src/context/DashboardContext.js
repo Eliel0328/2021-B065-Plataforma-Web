@@ -63,12 +63,7 @@ export const DashboardContextProvider = (props) => {
     };
 
     const setDataOnTipoDeIncidencias = (data) => {
-        if (data.length < 3 && data.length > 0) {
-            let diff = 3 - data.length;
-            for (let i = 0; i < diff; ++i) {
-                data.push(0);
-            }
-        } else {
+        if (data.length === 0) {
             data = [0, 0, 0];
         }
         let aux = ['Vulgar', 'Agresivo', 'Ofensivo'];
@@ -77,7 +72,6 @@ export const DashboardContextProvider = (props) => {
     };
 
     const setNoPermitidasOnDay = (obj) => {
-        console.log(obj);
         if (obj !== null) {
             let aux = Object.keys(obj);
 

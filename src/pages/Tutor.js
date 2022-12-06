@@ -96,114 +96,122 @@ export const Tutor = () => {
     return (
         <>
             <Layout>
-                <Title level={2}>{setGreet() + ' ' + tutor.nombre}</Title>
-            </Layout>
-            <Layout className='layout'>
-                <Content
-                    style={{
-                        padding: '10px 100px',
-                    }}
-                >
-                    <Row>
-                        <Col
-                            style={{
-                                padding: 10,
-                            }}
-                        >
-                            <Title level={4}>Datos del Tutor:</Title>
-                            <Form {...layout} name='nest-messages'>
-                                <Form.Item
-                                    name={['user', 'name']}
-                                    label='Nombre'
-                                    initialValue={`${tutor.nombre} ${tutor.apellidos}`}
-                                >
-                                    <Input disabled={true} />
-                                </Form.Item>
-                                <Form.Item
-                                    name={['user', 'email']}
-                                    label='Email'
-                                    initialValue={tutor.correo}
-                                >
-                                    <Input disabled={true} />
-                                </Form.Item>
-                            </Form>
-                        </Col>
-                        <Col
-                            style={{
-                                padding: 10,
-                                minWidth: 300,
-                            }}
-                        >
-                            <Title level={4}>Configuraciones:</Title>
-                            <Form name='nest-messages' onFinish={onFinish}>
-                                <Form.Item
-                                    name='slider'
-                                    label='Slider'
-                                    initialValue={tutor.numIncidencias}
-                                    style={{
-                                        marginTop: 50,
-                                    }}
-                                >
-                                    <Slider
-                                        tooltipVisible={true}
-                                        marks={{
-                                            10: '10',
-                                            20: '20',
-                                            30: '30',
-                                            40: '40',
-                                            50: '50',
-                                            60: '60',
-                                            70: '70',
-                                            80: '80',
-                                            90: '90',
-                                            100: '100',
+                <Row>
+                    <Col>
+                        <Title className='middle-center-2' level={2}>{setGreet() + ' ' + tutor.nombre}</Title>
+                        <Divider plain></Divider>
+                        <Layout className='layout middle-center-2'>
+                            <Content
+                                style={{
+                                    padding: '10px 100px',
+                                }}
+                            >
+                                <Row>
+                                    <Col
+                                        style={{
+                                            padding: 10,
                                         }}
-                                    />
-                                </Form.Item>
+                                    >
+                                        <Title level={4}>Datos del Tutor:</Title>
+                                        <Form {...layout} name='nest-messages'>
+                                            <Form.Item
+                                                name={['user', 'name']}
+                                                label='Nombre'
+                                                initialValue={`${tutor.nombre} ${tutor.apellidos}`}
+                                            >
+                                                <Input disabled={true} />
+                                            </Form.Item>
+                                            <Form.Item
+                                                name={['user', 'email']}
+                                                label='Email'
+                                                initialValue={tutor.correo}
+                                            >
+                                                <Input disabled={true} />
+                                            </Form.Item>
+                                        </Form>
+                                    </Col>
+                                    <Col
+                                        style={{
+                                            padding: 10,
+                                            minWidth: 300,
+                                        }}
+                                    >
+                                        <Title level={4}>Configuraciones:</Title>
+                                        <Form name='nest-messages' onFinish={onFinish}>
+                                            <Form.Item
+                                                name='slider'
+                                                label='Slider'
+                                                initialValue={tutor.numIncidencias}
+                                                style={{
+                                                    marginTop: 50,
+                                                }}
+                                            >
+                                                <Slider
+                                                    tooltipVisible={true}
+                                                    marks={{
+                                                        10: '10',
+                                                        20: '20',
+                                                        30: '30',
+                                                        40: '40',
+                                                        50: '50',
+                                                        60: '60',
+                                                        70: '70',
+                                                        80: '80',
+                                                        90: '90',
+                                                        100: '100',
+                                                    }}
+                                                />
+                                            </Form.Item>
 
-                                <Form.Item name='switch' label='Switch'>
-                                    <Switch
-                                        defaultChecked={tutor.extensionActiva}
-                                        onChange={toggleSwitchCheck}
-                                    />
-                                </Form.Item>
-                                <Button type='primary' htmlType='submit'>
-                                    Guardar
-                                </Button>
-                            </Form>
-                        </Col>
-                    </Row>
-                </Content>
+                                            <Form.Item name='switch' label='Switch'>
+                                                <Switch
+                                                    defaultChecked={tutor.extensionActiva}
+                                                    onChange={toggleSwitchCheck}
+                                                />
+                                            </Form.Item>
+                                            <Button type='primary' htmlType='submit'>
+                                                Guardar
+                                            </Button>
+                                        </Form>
+                                    </Col>
+                                </Row>
+                            </Content>
+                        </Layout>
+                        <Divider plain></Divider>
+                        <DashboardContextProvider>
+                            <Layout
+                                
+                            >
+                                <Content>
+                                    <Row>
+                                        <Col className='middle-center-2'
+                                            style={{
+                                                padding: 10,
+                                            }}
+                                        >
+                                            <IncidenciasPorSemana />
+                                        </Col>
+                                        <Col className='middle-center-2'
+                                            style={{
+                                                padding: 10,
+                                            }}
+                                        >
+                                            <TipoIncidencias />
+                                        </Col>
+                                        <Col className='middle-center-2'
+                                            style={{
+                                                padding: 10,
+                                            }}
+                                        >
+                                            <NoPermitidasPorSemana />
+                                        </Col>
+                                    </Row>
+                                </Content>
+                            </Layout>
+                        </DashboardContextProvider>
+                    </Col>
+                </Row>
             </Layout>
-            <DashboardContextProvider>
-                <Layout>
-                    <Content>
-                        <Row>
-                            <Col
-                                style={{
-                                    padding: 10,
-                                }}
-                            >
-                                <IncidenciasPorSemana />
-                            </Col>
-                            <Col
-                                style={{
-                                    padding: 10,
-                                }}
-                            >
-                                <TipoIncidencias />
-                            </Col>
-                            <Col
-                                style={{
-                                    padding: 10,
-                                }}
-                            >
-                                <NoPermitidasPorSemana />
-                            </Col>
-                        </Row>
-                    </Content>
-                </Layout>
-            </DashboardContextProvider>
         </>
     );
 };
