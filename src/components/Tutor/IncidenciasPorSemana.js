@@ -1,5 +1,7 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Col, Layout, Row, Button, Typography, Card } from 'antd';
+import { Component } from 'react';
+import Chart from 'react-apexcharts';
 
 import { DatePicker, Space } from 'antd';
 import { VictoryBar, VictoryChart, VictoryAxis } from 'victory';
@@ -7,17 +9,18 @@ import alertTopEnd from '../../helpers/alertTopEnd';
 import { DashboardContext } from '../../context/DashboardContext';
 import '../../css/basicStyle.css';
 import { FileSearchOutlined, FrownOutlined } from '@ant-design/icons';
+import GraficaIncidencias from './GraficaIncidencias';
 const { Title } = Typography;
 
 const { Header, Content, Footer } = Layout;
 
-export const GraficaIncidenciasByWeek = () => {
+export const IncidenciasPorSemana = () => {
     const { incidencias, getIncidencias } = useContext(DashboardContext);
 
     const [inicial, setIncial] = useState(null);
     const [final, setFinal] = useState(null);
+    const [data, setData] = useState(null);
 
-    const [loadings, setLoadings] = useState(false);
 
     const enterLoading = () => {
         if (inicial === null || final === null) {
@@ -27,10 +30,9 @@ export const GraficaIncidenciasByWeek = () => {
                 'Seleccione las fechas que desea buscar'
             );
         } else {
-            setLoadings(true);
             getIncidencias(inicial, final);
             setTimeout(() => {
-                setLoadings(false);
+                setData(incidencias);
             }, 1000);
         }
     };
@@ -62,7 +64,7 @@ export const GraficaIncidenciasByWeek = () => {
                 <Card
                     bordered={false}
                     style={{
-                        width: 400,
+                        width: 800,
                         minHeight: 500,
                     }}
                 >
@@ -80,13 +82,12 @@ export const GraficaIncidenciasByWeek = () => {
                         />
                         <Button
                             type='primary'
-                            loading={loadings}
                             onClick={() => enterLoading()}
                         >
                             Buscar
                         </Button>
 
-                        {incidencias === null ? (
+                        {data === null ? (
                             <div className='middle-center'>
                                 <center>
                                     <Title level={5}>Buscar Incidencias por semana</Title>
@@ -100,22 +101,7 @@ export const GraficaIncidenciasByWeek = () => {
                                 </center>
                             </div>
                         ) : (
-                            <VictoryChart
-                                // domainPadding will add space to each side of VictoryBar to
-                                // prevent it from overlapping the axis
-                                domainPadding={20}
-                            >
-                                <VictoryAxis
-                                // tickValues specifies both the number of ticks and where
-                                // they are placed on the axis
-                                />
-                                <VictoryAxis
-                                    dependentAxis
-                                    // tickFormat specifies how ticks should be displayed
-                                    tickFormat={(x) => `${x}`}
-                                />
-                                <VictoryBar data={incidencias} x='dia' y='data' />
-                            </VictoryChart>
+                            new GraficaIncidencias(data).render()
                         )}
                     </center>
                 </Card>

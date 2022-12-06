@@ -31,16 +31,23 @@ export const DashboardContextProvider = (props) => {
     };
 
     const setDataOnWeeks = (data) => {
-        let aux = [];
-        aux.push({ dia: 'domingo', data: data[0] });
-        aux.push({ dia: 'lunes', data: data[1] });
-        aux.push({ dia: 'martes', data: data[2] });
-        aux.push({ dia: 'miercoles', data: data[3] });
-        aux.push({ dia: 'jueves', data: data[4] });
-        aux.push({ dia: 'viernes', data: data[5] });
-        aux.push({ dia: 'sabado', data: data[6] });
+        if (data.length < 7) {
+            let diff = 7 - data.length;
+            for (let i = 0; i < diff; ++i) {
+                data.push(0);
+            }
+        }
+        let aux = [
+            'Domingo',
+            'Lunes',
+            'Martes',
+            'Miercoles',
+            'Jueves',
+            'Viernes',
+            'Sábado',
+        ];
 
-        return aux;
+        return { dias: aux, data };
     };
 
     const setDataOnTipoDeIncidencias = (data) => {
@@ -118,7 +125,7 @@ export const DashboardContextProvider = (props) => {
                 tipoDeIncidencias: state.tipoDeIncidencias,
                 getIncidencias,
                 getTipoDeIncidenciasPorDia,
-                getSitiosNoPermitidos
+                getSitiosNoPermitidos,
             }}
         >
             {props.children}
