@@ -27,6 +27,7 @@ import setGreet from '../helpers/setGreet';
 import { GraficaIncidenciasByWeek } from '../components/Tutor/GraficaIncidenciasByWeek';
 import { DashboardContextProvider } from '../context/DashboardContext';
 import { GraficaTipoDeIncidencias } from '../components/Tutor/GraficaTipoDeIncidencias';
+import { GraficaNoPermitidasByWeek } from '../components/Tutor/GraficaNoPermitidasByWeek';
 const { Header, Content, Footer } = Layout;
 const { Title } = Typography;
 
@@ -197,6 +198,7 @@ export const Tutor = () => {
                                     padding: 10,
                                 }}
                             >
+                                <GraficaNoPermitidasByWeek />
                             </Col>
                         </Row>
                     </Content>

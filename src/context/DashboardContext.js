@@ -89,6 +89,26 @@ export const DashboardContextProvider = (props) => {
         }
     };
 
+    const getSitiosNoPermitidos = async (fecha_inicial, fecha_final) => {
+        try {
+            let idTutor = getUserFromLocalStorage().id;
+            let inicial = setDateFormat(fecha_inicial);
+            let final = setDateFormat(fecha_final);
+
+            const resultado = await client.get(
+                `/getNoPermitidas/${idTutor}/${inicial}/${final}`
+            );
+
+            console.log(resultado.data);
+            // dispatch({
+            //     type: SET_INCIDECIAS_BY_WEEK,
+            //     payload: setDataOnWeeks(resultado.data),
+            // });
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
     return (
         <DashboardContext.Provider
             value={{
@@ -98,6 +118,7 @@ export const DashboardContextProvider = (props) => {
                 tipoDeIncidencias: state.tipoDeIncidencias,
                 getIncidencias,
                 getTipoDeIncidenciasPorDia,
+                getSitiosNoPermitidos
             }}
         >
             {props.children}
