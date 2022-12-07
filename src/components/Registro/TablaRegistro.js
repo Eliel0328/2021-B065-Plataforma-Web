@@ -1,42 +1,32 @@
-import '../../css/basicStyle.css';
 import React, { useContext, useEffect, useState } from 'react';
 import {
     Button,
     Card,
-    Col,
     DatePicker,
     Divider,
-    Layout,
     Modal,
-    Row,
     Space,
-    Switch,
     Table,
     Typography,
 } from 'antd';
 import { RegistroContext } from '../../context/RegistroContext';
-import { renderTags } from '../../helpers/renderTags';
 import { FrownOutlined } from '@ant-design/icons';
 import { SegmentoDeContenido } from './SegmentoDeContenido';
-import addDays from '../../helpers/addDays';
 import checkTheSameDate from '../../helpers/checkTheSameDate';
 import alertTopEnd from '../../helpers/alertTopEnd';
 import disabledDate from '../../helpers/disabledDate';
-const { Column, ColumnGroup } = Table;
-const { Title, Paragraph } = Typography;
+import '../../css/basicStyle.css';
+const { Column } = Table;
+const { Title } = Typography;
 
 export const TablaRegistro = () => {
     // Datos y funciones provenientes del contexto
     const {
         registro,
         segmento,
-        key,
-        setTags,
         obtenerRegistro,
-        modificarRegistro,
         setKey,
         obtenerSegmentoDeContenido,
-        modificarSegmeto,
     } = useContext(RegistroContext);
 
     // Obtener los registros del contenido asignado al usuario
@@ -50,14 +40,6 @@ export const TablaRegistro = () => {
     const [visible, setVisible] = useState(false);
     //      Contenido de un unico registro - Registro actual
     const [contenido, setContenido] = useState(null);
-    //      Efecto de carga
-    const [confirmLoading, setConfirmLoading] = useState(false);
-    //      Checks para las distintas etiquetas en el modal
-    const [vulgarCheck, setVulgarCheck] = useState(false);
-    const [agresivoCheck, setAgresivoCheck] = useState(false);
-    const [ofensivoCheck, setOfensivoCheck] = useState(false);
-    //      Key del registro actual
-    // const [key, setKey] = useState(-1);
     const [data, setData] = useState(null);
     const [inicial, setIncial] = useState(null);
     const [isFiltrado, setIsFiltrado] = useState(false);
@@ -169,7 +151,12 @@ export const TablaRegistro = () => {
                 }}
             >
                 <Column title='Dominio' dataIndex='dominio' key='dominio' />
-                <Column title='Direccion web' dataIndex='url' key='direccion_web' />
+                <Column
+                    title='Direccion web'
+                    dataIndex='url'
+                    key='direccion_web'
+                    ellipsis={true}
+                />
                 <Column title='Incidencias' dataIndex='noIncidencias' key='incidencia' />
                 <Column
                     title='Fecha y hora'

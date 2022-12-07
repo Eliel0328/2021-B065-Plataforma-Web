@@ -1,17 +1,14 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import {
     Button,
-    Form,
     Input,
     Col,
     Divider,
     Layout,
-    PageHeader,
     Row,
     Switch,
     Typography,
 } from 'antd';
-import { Content } from 'antd/lib/layout/layout';
 import { RegistroContext } from '../../context/RegistroContext';
 import { renderTags } from '../../helpers/renderTags';
 import { FrownOutlined } from '@ant-design/icons';
@@ -20,11 +17,7 @@ const { TextArea } = Input;
 
 export const SegmentoDeContenido = ({ contenido }) => {
     const {
-        registro,
         setTags,
-        obtenerRegistro,
-        modificarRegistro,
-        segmento,
         modificarSegmeto,
     } = useContext(RegistroContext);
 

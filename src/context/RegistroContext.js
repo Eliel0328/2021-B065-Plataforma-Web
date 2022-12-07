@@ -1,8 +1,7 @@
-import React, { createContext, useReducer, useState } from 'react';
+import React, { createContext, useReducer } from 'react';
 import RegistroReducer from '../reducer/RegistroReducer';
 
 import axios from 'axios';
-import Swal from 'sweetalert2';
 
 import {
     MODIFICAR_SEGMENTO,

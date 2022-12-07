@@ -7,8 +7,6 @@ import {
     SET_NO_PERMITIDAS,
     SET__TIPO_INCIDECIAS_BY_DAY,
 } from '../const/actionTypes';
-import alertTopEnd from '../helpers/alertTopEnd';
-import getTokenFromLocalStorage from '../helpers/getTokenFromLocalStorage';
 import getUserFromLocalStorage from '../helpers/getUserFromLocalStorage';
 import { constColores } from '../const/constColores';
 
@@ -28,15 +26,6 @@ export const DashboardContextProvider = (props) => {
 
     const [state, dispatch] = useReducer(DashboardReducer, initialState);
 
-    const randColor = () => {
-        return (
-            '#' +
-            Math.floor(Math.random() * 16777215)
-                .toString(16)
-                .padStart(6, '0')
-                .toUpperCase()
-        );
-    };
     const setDateFormat = (fecha) => {
         let aux = new Date(fecha);
         return `${aux.getFullYear()}-${aux.getMonth() + 1}-${aux.getDate()}`;

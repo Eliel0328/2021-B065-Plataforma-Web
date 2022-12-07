@@ -1,20 +1,13 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { Col, Layout, Row, Button, Typography, Card } from 'antd';
-import { Component } from 'react';
-import Chart from 'react-apexcharts';
-
-import { DatePicker, Space } from 'antd';
-import { VictoryBar, VictoryChart, VictoryAxis } from 'victory';
+import React, { useContext, useState } from 'react';
+import {  Button, Typography, Card, DatePicker } from 'antd';
 import alertTopEnd from '../../helpers/alertTopEnd';
 import { DashboardContext } from '../../context/DashboardContext';
-import '../../css/basicStyle.css';
-import { FileSearchOutlined, FrownOutlined } from '@ant-design/icons';
+import { FileSearchOutlined } from '@ant-design/icons';
 import GraficaIncidencias from './GraficaIncidencias';
 import addDays from '../../helpers/addDays';
 import disabledDate from '../../helpers/disabledDate';
+import '../../css/basicStyle.css';
 const { Title } = Typography;
-
-const { Header, Content, Footer } = Layout;
 
 export const IncidenciasPorSemana = () => {
     const { incidencias, getIncidencias } = useContext(DashboardContext);

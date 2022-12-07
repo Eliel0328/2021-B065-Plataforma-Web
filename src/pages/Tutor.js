@@ -1,22 +1,16 @@
 import React, { useContext, useEffect, useState } from 'react';
 import {
     Col,
-    Descriptions,
     Divider,
     Layout,
-    PageHeader,
     Row,
     Button,
     Form,
-    InputNumber,
     Switch,
     Spin,
     Typography,
-    Breadcrumb,
     Input,
-    Menu,
     Slider,
-    Modal,
 } from 'antd';
 import { LoginContext } from '../context/LoginContext';
 import alertTopEnd from '../helpers/alertTopEnd';
@@ -28,7 +22,7 @@ import { IncidenciasPorSemana } from '../components/Tutor/IncidenciasPorSemana';
 import { DashboardContextProvider } from '../context/DashboardContext';
 import { NoPermitidasPorSemana } from '../components/Tutor/NoPermitidasPorSemana';
 import { TipoIncidencias } from '../components/Tutor/TipoIncidencias';
-const { Header, Content, Footer } = Layout;
+const { Content } = Layout;
 const { Title } = Typography;
 
 const antIcon = (
@@ -55,6 +49,7 @@ export const Tutor = () => {
     const [switchCheck, setSwitchCheck] = useState(false);
 
     useEffect(() => {
+        // eslint-disable-next-line
         getTutor();
     }, []);
 

@@ -1,21 +1,15 @@
 import React, { useContext, useState } from 'react';
-import { Col, Layout, Row, Button, Typography, Card } from 'antd';
+import { Button, Typography, Card } from 'antd';
 
-
-import { DatePicker, Space } from 'antd';
-import { VictoryBar, VictoryChart, VictoryAxis } from 'victory';
+import { DatePicker } from 'antd';
 import alertTopEnd from '../../helpers/alertTopEnd';
 import { DashboardContext } from '../../context/DashboardContext';
-import '../../css/basicStyle.css';
-import { BarChartOutlined, SecurityScanOutlined } from '@ant-design/icons';
+import { SecurityScanOutlined } from '@ant-design/icons';
 import GraficaNoPermitidas from './GraficaNoPermitidas';
 import addDays from '../../helpers/addDays';
 import disabledDate from '../../helpers/disabledDate';
+import '../../css/basicStyle.css';
 const { Title } = Typography;
-
-const { Header, Content, Footer } = Layout;
-
-
 
 export const NoPermitidasPorSemana = () => {
     const { noPermitidas, getSitiosNoPermitidos } = useContext(DashboardContext);

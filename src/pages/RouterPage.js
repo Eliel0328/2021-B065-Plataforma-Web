@@ -4,7 +4,6 @@ import {
     HomeOutlined,
     LoginOutlined,
     LogoutOutlined,
-    RetweetOutlined,
     UnorderedListOutlined,
     UserOutlined,
 } from '@ant-design/icons';
@@ -14,8 +13,6 @@ import Registro from './Registro';
 import Login from './Login';
 import Home from './Home';
 import Excepciones from './Excepciones';
-// import { Descargas } from './Descargas';
-// import { Contacto } from './Contacto';
 import { LoginContext } from '../context/LoginContext';
 import Swal from 'sweetalert2';
 import { Tutor } from './Tutor';

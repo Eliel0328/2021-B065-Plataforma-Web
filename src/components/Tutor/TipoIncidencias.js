@@ -1,19 +1,14 @@
 import React, { useContext, useState } from 'react';
-import { Col, Layout, Row, Button, Typography, Card } from 'antd';
-import dayjs from 'dayjs';
-
-import { DatePicker, Space } from 'antd';
-import { VictoryBar, VictoryChart, VictoryAxis } from 'victory';
+import { Button, Typography, Card } from 'antd';
+import { DatePicker } from 'antd';
 import alertTopEnd from '../../helpers/alertTopEnd';
 import { DashboardContext } from '../../context/DashboardContext';
-import '../../css/basicStyle.css';
 import { BarChartOutlined } from '@ant-design/icons';
 import GraficaTipoIncidencias from './GraficaTipoIncidencias';
 import addDays from '../../helpers/addDays';
 import disabledDate from '../../helpers/disabledDate';
+import '../../css/basicStyle.css';
 const { Title } = Typography;
-
-const { Header, Content, Footer } = Layout;
 
 export const TipoIncidencias = () => {
     const { tipoDeIncidencias, getTipoDeIncidenciasPorDia } =

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col, Divider, Layout, PageHeader, Row, Space, Table, Tag, Typography } from 'antd';
+import { Col, Divider, Layout, PageHeader, Row, Typography } from 'antd';
 import { TablaRegistro } from '../components/Registro/TablaRegistro';
 import { RegistroContextProvider } from '../context/RegistroContext';
 const { Paragraph } = Typography;
