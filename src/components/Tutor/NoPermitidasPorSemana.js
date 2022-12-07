@@ -1,18 +1,21 @@
 import React, { useContext, useState } from 'react';
 import { Col, Layout, Row, Button, Typography, Card } from 'antd';
-import dayjs from 'dayjs';
+
 
 import { DatePicker, Space } from 'antd';
 import { VictoryBar, VictoryChart, VictoryAxis } from 'victory';
 import alertTopEnd from '../../helpers/alertTopEnd';
 import { DashboardContext } from '../../context/DashboardContext';
 import '../../css/basicStyle.css';
-import { BarChartOutlined } from '@ant-design/icons';
+import { BarChartOutlined, SecurityScanOutlined } from '@ant-design/icons';
 import GraficaNoPermitidas from './GraficaNoPermitidas';
 import addDays from '../../helpers/addDays';
+import disabledDate from '../../helpers/disabledDate';
 const { Title } = Typography;
 
 const { Header, Content, Footer } = Layout;
+
+
 
 export const NoPermitidasPorSemana = () => {
     const { noPermitidas, getSitiosNoPermitidos } = useContext(DashboardContext);
@@ -35,7 +38,6 @@ export const NoPermitidasPorSemana = () => {
             }, 1000);
         }
     };
-
 
     const onChange = (date, dateString) => {
         console.log(date, dateString);
@@ -73,6 +75,7 @@ export const NoPermitidasPorSemana = () => {
 
                         <DatePicker
                             onChange={onChange}
+                            disabledDate={disabledDate}
                             placeholder='Selecciona la fecha'
                         />
                         <Button type='primary' onClick={() => enterLoading()}>
@@ -83,7 +86,7 @@ export const NoPermitidasPorSemana = () => {
                             <div className=''>
                                 <center>
                                     <Title level={5}>Buscar Tipo de Incidencias</Title>
-                                    <BarChartOutlined
+                                    <SecurityScanOutlined
                                         style={{
                                             fontSize: '100px',
                                             color: '#08c',

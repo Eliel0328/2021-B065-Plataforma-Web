@@ -98,7 +98,9 @@ export const Tutor = () => {
             <Layout>
                 <Row>
                     <Col>
-                        <Title className='middle-center-2' level={2}>{setGreet() + ' ' + tutor.nombre}</Title>
+                        <Title className='middle-center-2' level={2}>
+                            {setGreet() + ' ' + tutor.nombre}
+                        </Title>
                         <Divider plain></Divider>
                         <Layout className='layout middle-center-2'>
                             <Content
@@ -147,7 +149,6 @@ export const Tutor = () => {
                                                 }}
                                             >
                                                 <Slider
-                                                    tooltipVisible={true}
                                                     marks={{
                                                         10: '10',
                                                         20: '20',
@@ -179,26 +180,27 @@ export const Tutor = () => {
                         </Layout>
                         <Divider plain></Divider>
                         <DashboardContextProvider>
-                            <Layout
-                                
-                            >
+                            <Layout>
                                 <Content>
                                     <Row>
-                                        <Col className='middle-center-2'
+                                        <Col
+                                            className='middle-center-2'
                                             style={{
                                                 padding: 10,
                                             }}
                                         >
                                             <IncidenciasPorSemana />
                                         </Col>
-                                        <Col className='middle-center-2'
+                                        <Col
+                                            className='middle-center-2'
                                             style={{
                                                 padding: 10,
                                             }}
                                         >
                                             <TipoIncidencias />
                                         </Col>
-                                        <Col className='middle-center-2'
+                                        <Col
+                                            className='middle-center-2'
                                             style={{
                                                 padding: 10,
                                             }}

@@ -10,6 +10,7 @@ import '../../css/basicStyle.css';
 import { BarChartOutlined } from '@ant-design/icons';
 import GraficaTipoIncidencias from './GraficaTipoIncidencias';
 import addDays from '../../helpers/addDays';
+import disabledDate from '../../helpers/disabledDate';
 const { Title } = Typography;
 
 const { Header, Content, Footer } = Layout;
@@ -73,6 +74,7 @@ export const TipoIncidencias = () => {
 
                         <DatePicker
                             onChange={onChange}
+                            disabledDate={disabledDate}
                             placeholder='Selecciona la fecha'
                         />
                         <Button type='primary' onClick={() => enterLoading()}>

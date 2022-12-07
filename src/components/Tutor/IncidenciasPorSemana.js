@@ -11,6 +11,7 @@ import '../../css/basicStyle.css';
 import { FileSearchOutlined, FrownOutlined } from '@ant-design/icons';
 import GraficaIncidencias from './GraficaIncidencias';
 import addDays from '../../helpers/addDays';
+import disabledDate from '../../helpers/disabledDate';
 const { Title } = Typography;
 
 const { Header, Content, Footer } = Layout;
@@ -26,8 +27,8 @@ export const IncidenciasPorSemana = () => {
         if (inicial === null || final === null) {
             alertTopEnd(
                 'warning',
-                'Fechas no seleccionadas',
-                'Seleccione las fechas que desea buscar'
+                'Semana no seleccionada',
+                'Seleccione la semana que desea buscar'
             );
         } else {
             getIncidencias(inicial, final);
@@ -73,6 +74,7 @@ export const IncidenciasPorSemana = () => {
                         <DatePicker
                             onChange={onChange}
                             picker='week'
+                            disabledDate={disabledDate}
                             placeholder='Selecciona la semana'
                         />
                         <Button type='primary' onClick={() => enterLoading()}>

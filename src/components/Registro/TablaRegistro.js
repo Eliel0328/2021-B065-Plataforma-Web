@@ -21,6 +21,7 @@ import { SegmentoDeContenido } from './SegmentoDeContenido';
 import addDays from '../../helpers/addDays';
 import checkTheSameDate from '../../helpers/checkTheSameDate';
 import alertTopEnd from '../../helpers/alertTopEnd';
+import disabledDate from '../../helpers/disabledDate';
 const { Column, ColumnGroup } = Table;
 const { Title, Paragraph } = Typography;
 
@@ -144,6 +145,7 @@ export const TablaRegistro = () => {
                 <DatePicker
                     placeholder='Seleccione la fecha'
                     showToday={false}
+                    disabledDate={disabledDate}
                     onChange={onChange}
                 />
                 <Button
@@ -153,11 +155,7 @@ export const TablaRegistro = () => {
                 >
                     Buscar
                 </Button>
-                <Button
-                    style={{ margin: 10 }}
-                    type='ghost'
-                    onClick={setAllRegistros}
-                >
+                <Button style={{ margin: 10 }} type='ghost' onClick={setAllRegistros}>
                     Mostrar todos los registros
                 </Button>
             </Card>
