@@ -156,6 +156,9 @@ export const BlackList = () => {
                 bordered={true}
                 rowKey='_id'
                 className={listaNegra.length === 0 ? 'd-none' : ''}
+                scroll={{
+                    x: 800,
+                  }}
             >
                 <Column title='Dominio' dataIndex='dominio' key='dominio' />
                 <Column

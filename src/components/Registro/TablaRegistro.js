@@ -164,6 +164,9 @@ export const TablaRegistro = () => {
                 bordered={true}
                 rowKey={'_id'}
                 loading={loading}
+                scroll={{
+                    x: 800,
+                }}
             >
                 <Column title='Dominio' dataIndex='dominio' key='dominio' />
                 <Column title='Direccion web' dataIndex='url' key='direccion_web' />

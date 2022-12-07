@@ -118,6 +118,9 @@ export const WhiteList = () => {
                 bordered={true}
                 rowKey='_id'
                 className={listaBlanca.length === 0 ? 'd-none' : ''}
+                scroll={{
+                    x: 800,
+                  }}
             >
                 <Column title='Dominio' dataIndex='dominio' key='dominio' />
                 <Column
