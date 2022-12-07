@@ -10,6 +10,7 @@ import { DashboardContext } from '../../context/DashboardContext';
 import '../../css/basicStyle.css';
 import { FileSearchOutlined, FrownOutlined } from '@ant-design/icons';
 import GraficaIncidencias from './GraficaIncidencias';
+import addDays from '../../helpers/addDays';
 const { Title } = Typography;
 
 const { Header, Content, Footer } = Layout;
@@ -20,7 +21,6 @@ export const IncidenciasPorSemana = () => {
     const [inicial, setIncial] = useState(null);
     const [final, setFinal] = useState(null);
     const [data, setData] = useState(null);
-
 
     const enterLoading = () => {
         if (inicial === null || final === null) {
@@ -35,12 +35,6 @@ export const IncidenciasPorSemana = () => {
                 setData(incidencias);
             }, 1000);
         }
-    };
-
-    const addDays = (actual, days) => {
-        let aux = new Date(actual);
-        aux.setDate(aux.getDate() + days);
-        return aux;
     };
 
     const onChange = (date, dateString) => {
@@ -81,10 +75,7 @@ export const IncidenciasPorSemana = () => {
                             picker='week'
                             placeholder='Selecciona la semana'
                         />
-                        <Button
-                            type='primary'
-                            onClick={() => enterLoading()}
-                        >
+                        <Button type='primary' onClick={() => enterLoading()}>
                             Buscar
                         </Button>
 

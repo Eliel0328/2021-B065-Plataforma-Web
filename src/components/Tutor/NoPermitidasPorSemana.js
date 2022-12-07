@@ -9,6 +9,7 @@ import { DashboardContext } from '../../context/DashboardContext';
 import '../../css/basicStyle.css';
 import { BarChartOutlined } from '@ant-design/icons';
 import GraficaNoPermitidas from './GraficaNoPermitidas';
+import addDays from '../../helpers/addDays';
 const { Title } = Typography;
 
 const { Header, Content, Footer } = Layout;
@@ -35,11 +36,6 @@ export const NoPermitidasPorSemana = () => {
         }
     };
 
-    const addDays = (actual, days) => {
-        let aux = new Date(actual);
-        aux.setDate(aux.getDate() + days);
-        return aux;
-    };
 
     const onChange = (date, dateString) => {
         console.log(date, dateString);

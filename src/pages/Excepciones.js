@@ -20,12 +20,13 @@ const Excepciones = () => {
         <Layout>
             <ExcepcionesContextProvider>
                 <Row>
-                    <Col span={12} offset={6}>
+                    <Col span={20} offset={2}>
                         <PageHeader
                             title='Paginas permitidas y no permitidas'
                             extra={[
                                 <Button
                                     key='1'
+                                    // shape='round'
                                     type= {listaExceptiones ? 'primary': 'ghost'} 
                                     onClick={() => onPressWhiteList()}
                                 >
@@ -33,6 +34,7 @@ const Excepciones = () => {
                                 </Button>,
                                 <Button
                                     key='2'
+                                    // shape='round'
                                     type= {!listaExceptiones ? 'primary': 'ghost'} 
                                     onClick={() => onPressBlackList()}
                                 >

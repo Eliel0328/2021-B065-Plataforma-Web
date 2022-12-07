@@ -158,7 +158,12 @@ export const BlackList = () => {
                 className={listaNegra.length === 0 ? 'd-none' : ''}
             >
                 <Column title='Dominio' dataIndex='dominio' key='dominio' />
-                <Column title='Direccion web' dataIndex='url' key='direccion_web' />
+                <Column
+                    title='Direccion web'
+                    dataIndex='url'
+                    key='direccion_web'
+                    ellipsis={true}
+                />
                 <Column
                     title='Detalles'
                     key='_id'
@@ -224,9 +229,7 @@ export const BlackList = () => {
                         <Input placeholder='Direccion de la pagina' />
                     </Form.Item>
                     <Form.Item label='URL' hidden={!isDetalles}>
-                        <Input
-                            value={contenido !== null ? contenido.url : ''}
-                        />
+                        <Input value={contenido !== null ? contenido.url : ''} />
                     </Form.Item>
                     <Form.Item
                         label='Descripcion'

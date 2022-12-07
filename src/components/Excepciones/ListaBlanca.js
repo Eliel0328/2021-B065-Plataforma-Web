@@ -120,7 +120,12 @@ export const WhiteList = () => {
                 className={listaBlanca.length === 0 ? 'd-none' : ''}
             >
                 <Column title='Dominio' dataIndex='dominio' key='dominio' />
-                <Column title='Direccion web' dataIndex='url' key='direccion_web' />
+                <Column
+                    title='Direccion web'
+                    dataIndex='url'
+                    key='direccion_web'
+                    ellipsis={true}
+                />
                 <Column
                     title='Detalles'
                     key='_id'
