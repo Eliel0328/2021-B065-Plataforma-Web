@@ -1,14 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import {
-    Button,
-    Card,
-    DatePicker,
-    Divider,
-    Modal,
-    Space,
-    Table,
-    Typography,
-} from 'antd';
+import { Button, Card, DatePicker, Divider, Modal, Space, Table, Typography } from 'antd';
 import { RegistroContext } from '../../context/RegistroContext';
 import { FrownOutlined } from '@ant-design/icons';
 import { SegmentoDeContenido } from './SegmentoDeContenido';
@@ -16,18 +7,14 @@ import checkTheSameDate from '../../helpers/checkTheSameDate';
 import alertTopEnd from '../../helpers/alertTopEnd';
 import disabledDate from '../../helpers/disabledDate';
 import '../../css/basicStyle.css';
+import setFormatTime from '../../helpers/setFormatTime';
 const { Column } = Table;
 const { Title } = Typography;
 
 export const TablaRegistro = () => {
     // Datos y funciones provenientes del contexto
-    const {
-        registro,
-        segmento,
-        obtenerRegistro,
-        setKey,
-        obtenerSegmentoDeContenido,
-    } = useContext(RegistroContext);
+    const { registro, segmento, obtenerRegistro, setKey, obtenerSegmentoDeContenido } =
+        useContext(RegistroContext);
 
     // Obtener los registros del contenido asignado al usuario
     useEffect(() => {
@@ -59,19 +46,9 @@ export const TablaRegistro = () => {
 
     const handleCancel = () => {
         setVisible(false);
-    };
-
-    const setFormatTime = (date) => {
-        let a = new Date(date);
-        let aux =
-            (a.getHours() + 6) % 24 < 10
-                ? `0${(a.getHours() + 6) % 24}`
-                : (a.getHours() + 6) % 24;
-        let aux2 = a.getMonth() + 1 < 10 ? `0${a.getMonth() + 1}` : a.getMonth() + 1;
-        let aux3 = a.getDate() < 10 ? `0${a.getDate()}` : a.getDate();
-        let aux4 = a.getMinutes() < 10 ? `0${a.getMinutes()}` : a.getMinutes();
-        // return `${a.getFullYear()}-${a.getMonth()}-${a.getDate()}  ${a.getHours()}:${a.getMinutes()}`;
-        return `${a.getFullYear()}-${aux2}-${aux3}  ${aux}:${aux4}`;
+        setKey(0);
+        obtenerSegmentoDeContenido(0);
+        setContenido([]);
     };
 
     const onChange = (date, dateString) => {
@@ -181,9 +158,10 @@ export const TablaRegistro = () => {
             {/* Modal de contenido para calificar clasificacion */}
             <Modal
                 title='Contenido clasificado como ofensivo'
-                visible={visible}
+                open={visible}
                 onCancel={handleCancel}
                 width={800}
+                destroyOnClose={true}
                 footer={[
                     <Button key='back' onClick={handleCancel}>
                         Cerrar Lista

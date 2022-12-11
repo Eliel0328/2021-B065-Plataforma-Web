@@ -1,14 +1,5 @@
 import React, { useContext, useState } from 'react';
-import {
-    Button,
-    Input,
-    Col,
-    Divider,
-    Layout,
-    Row,
-    Switch,
-    Typography,
-} from 'antd';
+import { Button, Input, Col, Divider, Layout, Row, Switch, Typography } from 'antd';
 import { RegistroContext } from '../../context/RegistroContext';
 import { renderTags } from '../../helpers/renderTags';
 import { FrownOutlined } from '@ant-design/icons';
@@ -16,21 +7,20 @@ const { Title } = Typography;
 const { TextArea } = Input;
 
 export const SegmentoDeContenido = ({ contenido }) => {
-    const {
-        setTags,
-        modificarSegmeto,
-    } = useContext(RegistroContext);
+    const { setTags, modificarSegmeto } = useContext(RegistroContext);
 
     const [value, setValue] = useState(
         contenido.justificacionTutor !== '' ? contenido.justificacionTutor : ''
     );
 
-    const [vulgarCheck, setVulgarCheck] = useState(contenido.calificacionTutor.vulgar);
+    const [vulgarCheck, setVulgarCheck] = useState(
+        contenido.calificacionTutor.vulgar ? true : false
+    );
     const [agresivoCheck, setAgresivoCheck] = useState(
-        contenido.calificacionTutor.agresivo
+        contenido.calificacionTutor.agresivo ? true : false
     );
     const [ofensivoCheck, setOfensivoCheck] = useState(
-        contenido.calificacionTutor.ofensivo
+        contenido.calificacionTutor.ofensivo ? true : false
     );
 
     const [confirmLoading, setConfirmLoading] = useState(false);
