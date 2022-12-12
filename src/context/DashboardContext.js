@@ -6,7 +6,7 @@ import {
     GET_TIEMPO_CONEXION,
     SET_INCIDECIAS_BY_WEEK,
     SET_NO_PERMITIDAS,
-    SET__TIPO_INCIDECIAS_BY_DAY,
+    SET_TIPO_INCIDECIAS_BY_DAY,
 } from '../const/actionTypes';
 import getUserFromLocalStorage from '../helpers/getUserFromLocalStorage';
 import { constColores } from '../const/constColores';
@@ -128,7 +128,7 @@ export const DashboardContextProvider = (props) => {
             );
 
             dispatch({
-                type: SET__TIPO_INCIDECIAS_BY_DAY,
+                type: SET_TIPO_INCIDECIAS_BY_DAY,
                 payload: setDataOnTipoDeIncidencias(resultado.data),
             });
         } catch (error) {

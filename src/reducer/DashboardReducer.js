@@ -2,7 +2,7 @@ import {
     GET_TIEMPO_CONEXION,
     SET_INCIDECIAS_BY_WEEK,
     SET_NO_PERMITIDAS,
-    SET__TIPO_INCIDECIAS_BY_DAY,
+    SET_TIPO_INCIDECIAS_BY_DAY,
 } from '../const/actionTypes';
 
 export default (state, action) => {
@@ -12,7 +12,7 @@ export default (state, action) => {
                 ...state,
                 incidencias: action.payload,
             };
-        case SET__TIPO_INCIDECIAS_BY_DAY:
+        case SET_TIPO_INCIDECIAS_BY_DAY:
             return {
                 ...state,
                 tipoDeIncidencias: action.payload,

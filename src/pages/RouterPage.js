@@ -7,7 +7,7 @@ import {
     UnorderedListOutlined,
     UserOutlined,
 } from '@ant-design/icons';
-import { Menu, Layout } from 'antd';
+import { Menu, Layout, Image } from 'antd';
 import { BrowserRouter as Router, Routes, Route, Link, Navigate } from 'react-router-dom';
 import Registro from './Registro';
 import Login from './Login';
@@ -18,6 +18,7 @@ import Swal from 'sweetalert2';
 import { Tutor } from './Tutor';
 import { Recuperar } from './Recuperar';
 import '../css/basicStyle.css';
+import logo from '../file/logo_1.png';
 
 const { Header, Content, Footer } = Layout;
 
@@ -184,6 +185,10 @@ const RouterPage = () => {
                             textAlign: 'center',
                         }}
                     >
+                        <img
+                            width={40}
+                            src={logo}
+                        />
                         Vigilantt ©2022
                     </Footer>
                 </Layout>
