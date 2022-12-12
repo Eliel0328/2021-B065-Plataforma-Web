@@ -7,6 +7,7 @@ import {
     Divider,
     Image,
     Layout,
+    List,
     PageHeader,
     Row,
     Tag,
@@ -21,10 +22,40 @@ import { Contacto } from './Contacto';
 import '../css/basicStyle.css';
 import logo from '../file/logo_1.png';
 import diagrama_informativo from '../file/diagrama_informativo.png';
+import advertencia from '../file/advertencia.png';
+import vigilantt from '../file/Vigilantt.png';
 import writer from '../file/writer.png';
 import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 const { Header, Content, Footer } = Layout;
 const { Paragraph } = Typography;
+
+const data = [
+    {
+        key: '1',
+        name: 'Extensión web',
+        info: 'Es la responsable de la recolepcción de la información de la navegación.',
+    },
+    {
+        key: '2',
+        name: 'Servidor web',
+        info: 'Administra y distribuye toda la información del sistema.',
+    },
+    {
+        key: '3',
+        name: 'Plataforma de registro y monitoreo',
+        info: 'Su objetivo es mostrar la información clasificada al tutor al mismo tiempo que le permite tener control sobre la configuración del sistema.',
+    },
+    {
+        key: '4',
+        name: 'Clasificador',
+        info: 'Busca dar una calificación para el contenido recuperado por la extensión.',
+    },
+    {
+        key: '5',
+        name: 'Almacenamiento',
+        info: 'Almacenamiento del contenido clasificado y la configuración del tutor.',
+    },
+];
 
 const contentStyle = {
     margin: 0,
@@ -133,41 +164,58 @@ const Home = () => {
                                                 <Col span={12}>
                                                     <Typography>
                                                         <Title level={2}>
-                                                            ¿Cómo se clasifican los datos?
+                                                            ¿Cómo funciona Vigilantt?
                                                         </Title>
-                                                        <Paragraph>
-                                                            Para la clasificacion de los
-                                                            datos se uso el siguiente
-                                                            diagrama.
+                                                        <Paragraph className='txt-ct'>
+                                                            Vigilantt se compone de
+                                                            diversos modulos para
+                                                            supervisar el contenido
+                                                            visitado durante la navegación
+                                                            web. Los modulos son los
+                                                            siguientes:
                                                         </Paragraph>
+                                                        <List
+                                                            className='txt-ct'
+                                                            dataSource={data}
+                                                            renderItem={(item) => (
+                                                                <List.Item>
+                                                                    <Typography.Text
+                                                                        strong
+                                                                    >
+                                                                        {item.name}
+                                                                    </Typography.Text>
+                                                                    : {item.info}
+                                                                </List.Item>
+                                                            )}
+                                                        />{' '}
                                                     </Typography>
                                                 </Col>
-                                                <Col span={12}>
-                                                    <Image src={diagrama_informativo} />
+                                                <Col span={8} style={{ padding: '5%' }}>
+                                                    <Image src={vigilantt} />
                                                 </Col>
                                             </Row>
                                         </div>
                                         <div>
                                             <Row className='center' style={contentStyle}>
-                                                <Col span={12}>
-                                                    <Image
-                                                        preview={false}
-                                                        src={writer}
-                                                        style={{padding:'10%'}}
-                                                    ></Image>
-                                                </Col>
-                                                <Col span={12} style={{padding: '10px'}}>
+                                                <Col
+                                                    span={16}
+                                                    style={{ padding: '10px' }}
+                                                >
                                                     <Typography>
                                                         <Title level={2}>
                                                             ¿Qué es el contenido
                                                             clasificado?
                                                         </Title>
-                                                        <Paragraph>
-                                                            El contenido clasificado hace
-                                                            referencia a que cierto
-                                                            segmento de contenido
-                                                            pertenece a alguno(s) de los
-                                                            siguientes grupos:
+                                                        <Paragraph className='txt-ct'>
+                                                            El contenido clasificado se
+                                                            trata del resultado devuelto
+                                                            por el clasificador. Este
+                                                            mismo tiene etiquetas que le
+                                                            dan un valor necesario para
+                                                            brindar un mejor contexto
+                                                            sobre el mismo contenido. Las
+                                                            etiquetas pueden ser alguna(s)
+                                                            las siguentes :
                                                         </Paragraph>
 
                                                         <Tag color='magenta'>Vulgar</Tag>
@@ -183,7 +231,15 @@ const Home = () => {
                                                             Ofensivo
                                                         </Tag>
 
-                                                        <Paragraph>
+                                                        <Paragraph className='txt-ct'>
+                                                            Para un mejor y más claro
+                                                            manejo de la información el
+                                                            contenido clasificado es
+                                                            divido en segmentos del
+                                                            contenido, esto para mostrar
+                                                            casos especificos.
+                                                        </Paragraph>
+                                                        <Paragraph className='txt-ct'>
                                                             Los segmentos podrán
                                                             pertenecer a uno o más grupos
                                                             a la vez. A cada segmento se
@@ -194,17 +250,63 @@ const Home = () => {
                                                             alguno de los grupos
                                                             anteriormente mencionados,
                                                             este será considerado como
-                                                            contenido apto.
+                                                            contenido apto y por lo tanto
+                                                            no será almacenado.
                                                         </Paragraph>
                                                     </Typography>
                                                 </Col>
                                             </Row>
                                         </div>
                                         <div>
-                                            <h3 style={contentStyle}>3</h3>
+                                            <Row className='center' style={contentStyle}>
+                                                <Col span={10}>
+                                                    <Typography>
+                                                        <Title level={2}>
+                                                            ¿Cómo se clasifican los datos?
+                                                        </Title>
+                                                        <Paragraph className='txt-ct'>
+                                                            El etiquetado de la
+                                                            información es un proceso
+                                                            necesario y de vital
+                                                            importacia para el correcto
+                                                            funcionamiento del sistema y
+                                                            la identificación de
+                                                            incidencias. Por lo tanto,
+                                                            para la clasificacion de los
+                                                            datos se uso el siguiente
+                                                            diagrama.
+                                                        </Paragraph>
+                                                    </Typography>
+                                                </Col>
+                                                <Col span={10}>
+                                                    <Image src={diagrama_informativo} />
+                                                </Col>
+                                            </Row>
                                         </div>
                                         <div>
-                                            <h3 style={contentStyle}>4</h3>
+                                            <Row className='center' style={contentStyle}>
+                                                <Col span={12}>
+                                                    <Typography>
+                                                        <Title level={2}>
+                                                            ¿Qué es una incidencia?
+                                                        </Title>
+                                                        <Paragraph className='txt-ct'>
+                                                            Una incidencia se considera el
+                                                            que, alguno de los segmentos
+                                                            de contenido pertenezca a
+                                                            algún grupo de los antes
+                                                            mencionados. Por cada etiqueta
+                                                            que el segmento tenga, se
+                                                            contará como una incidencia.
+                                                        </Paragraph>
+                                                        <Image
+                                                            preview={false}
+                                                            width={50}
+                                                            src={advertencia}
+                                                        />
+                                                    </Typography>
+                                                </Col>
+                                            </Row>
                                         </div>
                                     </Carousel>
                                 </Col>
