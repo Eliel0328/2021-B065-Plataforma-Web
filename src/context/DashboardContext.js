@@ -3,6 +3,7 @@ import DashboardReducer from '../reducer/DashboardReducer';
 import axios from 'axios';
 
 import {
+    GET_TIEMPO_CONEXION,
     SET_INCIDECIAS_BY_WEEK,
     SET_NO_PERMITIDAS,
     SET__TIPO_INCIDECIAS_BY_DAY,
@@ -22,6 +23,7 @@ export const DashboardContextProvider = (props) => {
         incidencias: null,
         tipoDeIncidencias: null,
         noPermitidas: null,
+        tiempoDeConexion: null,
     };
 
     const [state, dispatch] = useReducer(DashboardReducer, initialState);
@@ -75,6 +77,25 @@ export const DashboardContextProvider = (props) => {
         } else {
             return { categoria: [], data: [], colores: [] };
         }
+    };
+
+    const setTiempoDeConexionOnWeek = (obj) => {
+        if (obj !== null) {
+            let aux = Object.keys(obj).sort();
+
+            const data = [];
+            for (let i = 0; i < aux.length; ++i) {
+                data.push(toHours(obj[aux[i]]));
+            }
+
+            return { categoria: aux, data };
+        } else {
+            return { categoria: [], data: [] };
+        }
+    };
+
+    const toHours = (totalSeconds) => {
+        return (totalSeconds / 60 / 60).toFixed(2);
     };
 
     const getIncidencias = async (fecha_inicial, fecha_final) => {
@@ -138,6 +159,31 @@ export const DashboardContextProvider = (props) => {
         }
     };
 
+    const getTiempoDeConexion = async (fecha_inicial, fecha_final) => {
+        try {
+            let idTutor = getUserFromLocalStorage().id;
+            let inicial = setDateFormat(fecha_inicial);
+            let final = setDateFormat(fecha_final);
+
+            const resultado = await client.get(
+                `/getTiempoDeConexion/${idTutor}/${inicial}/${final}`
+            );
+
+            let aux = setTiempoDeConexionOnWeek(resultado.data);
+
+            dispatch({
+                type: GET_TIEMPO_CONEXION,
+                payload: aux,
+            });
+        } catch (error) {
+            console.error(error);
+            dispatch({
+                type: GET_TIEMPO_CONEXION,
+                payload: null,
+            });
+        }
+    };
+
     return (
         <DashboardContext.Provider
             value={{
@@ -146,9 +192,11 @@ export const DashboardContextProvider = (props) => {
                 incidencias: state.incidencias,
                 tipoDeIncidencias: state.tipoDeIncidencias,
                 noPermitidas: state.noPermitidas,
+                tiempoDeConexion: state.tiempoDeConexion,
                 getIncidencias,
                 getTipoDeIncidenciasPorDia,
                 getSitiosNoPermitidos,
+                getTiempoDeConexion,
             }}
         >
             {props.children}

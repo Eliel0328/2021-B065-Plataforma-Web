@@ -22,6 +22,7 @@ import { IncidenciasPorSemana } from '../components/Tutor/IncidenciasPorSemana';
 import { DashboardContextProvider } from '../context/DashboardContext';
 import { NoPermitidasPorSemana } from '../components/Tutor/NoPermitidasPorSemana';
 import { TipoIncidencias } from '../components/Tutor/TipoIncidencias';
+import { TiempoDeConexion } from '../components/Tutor/TiempoDeConexion';
 const { Content } = Layout;
 const { Title } = Typography;
 
@@ -49,8 +50,8 @@ export const Tutor = () => {
     const [switchCheck, setSwitchCheck] = useState(false);
 
     useEffect(() => {
-        // eslint-disable-next-line
         getTutor();
+        // eslint-disable-next-line
     }, []);
 
     const onFinish = (values) => {
@@ -135,13 +136,12 @@ export const Tutor = () => {
                                     >
                                         <Title level={4}>Configuraciones:</Title>
                                         <Form name='nest-messages' onFinish={onFinish}>
+                                            <Title level={5} className='center'>
+                                                Incidencias:
+                                            </Title>
                                             <Form.Item
                                                 name='slider'
-                                                label='Slider'
                                                 initialValue={tutor.numIncidencias}
-                                                style={{
-                                                    marginTop: 50,
-                                                }}
                                             >
                                                 <Slider
                                                     marks={{
@@ -158,16 +158,20 @@ export const Tutor = () => {
                                                     }}
                                                 />
                                             </Form.Item>
-
-                                            <Form.Item name='switch' label='Switch'>
+                                            <Title level={5} className='center'>
+                                                Encender/Apagar Extensión:
+                                            </Title>
+                                            <Form.Item name='switch' className='center'>
                                                 <Switch
                                                     defaultChecked={tutor.extensionActiva}
                                                     onChange={toggleSwitchCheck}
                                                 />
                                             </Form.Item>
-                                            <Button type='primary' htmlType='submit'>
-                                                Guardar
-                                            </Button>
+                                            <Form.Item className='center'>
+                                                <Button type='primary' htmlType='submit'>
+                                                    Guardar
+                                                </Button>
+                                            </Form.Item>
                                         </Form>
                                     </Col>
                                 </Row>
@@ -201,6 +205,14 @@ export const Tutor = () => {
                                             }}
                                         >
                                             <NoPermitidasPorSemana />
+                                        </Col>
+                                        <Col
+                                            className='middle-center-2'
+                                            style={{
+                                                padding: 10,
+                                            }}
+                                        >
+                                            <TiempoDeConexion />
                                         </Col>
                                     </Row>
                                 </Content>

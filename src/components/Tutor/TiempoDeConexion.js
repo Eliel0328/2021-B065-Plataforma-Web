@@ -1,18 +1,17 @@
 import React, { useContext, useState } from 'react';
 import { Button, Typography, Card } from 'antd';
-
 import { DatePicker } from 'antd';
 import alertTopEnd from '../../helpers/alertTopEnd';
 import { DashboardContext } from '../../context/DashboardContext';
-import { CloseCircleOutlined, SecurityScanOutlined } from '@ant-design/icons';
-import GraficaNoPermitidas from './GraficaNoPermitidas';
+import { BarChartOutlined, ClockCircleOutlined, FieldTimeOutlined } from '@ant-design/icons';
+import GraficaTiempoDeConexion from './GraficaTiempoDeConexion';
 import addDays from '../../helpers/addDays';
 import disabledDate from '../../helpers/disabledDate';
 import '../../css/basicStyle.css';
 const { Title } = Typography;
 
-export const NoPermitidasPorSemana = () => {
-    const { noPermitidas, getSitiosNoPermitidos } = useContext(DashboardContext);
+export const TiempoDeConexion = () => {
+    const { tiempoDeConexion, getTiempoDeConexion } = useContext(DashboardContext);
 
     const [inicial, setIncial] = useState(null);
     const [final, setFinal] = useState(null);
@@ -26,22 +25,23 @@ export const NoPermitidasPorSemana = () => {
                 'Seleccione las fechas que desea buscar'
             );
         } else {
-            getSitiosNoPermitidos(inicial, final);
+            getTiempoDeConexion(inicial, final);
             setTimeout(() => {
-                setData(noPermitidas);
+                setData(tiempoDeConexion);
             }, 1000);
         }
     };
 
     const onChange = (date, dateString) => {
-        console.log(date, dateString);
-
         if (dateString === '') {
             setIncial(null);
             setFinal(null);
         } else {
-            let firstday = new Date(date._d);
-            let lastday = addDays(firstday, 1);
+            let curr = new Date(date._d);
+            let first = curr.getDate() - curr.getDay();
+            let firstday = new Date(curr.setDate(first));
+            let lastday = addDays(firstday, 6);
+
             setIncial(firstday);
             setFinal(lastday);
         }
@@ -59,7 +59,7 @@ export const NoPermitidasPorSemana = () => {
                     }}
                 >
                     <center>
-                        <Title level={4}>Sitios no Permitidos</Title>
+                        <Title level={4}>Tiempo de Conexion</Title>
                         <p>
                             Seleccion la fecha para ver el tipo de incidencias registradas
                             durante ese dia. Para revisar en profunidad estas incidencias
@@ -69,6 +69,7 @@ export const NoPermitidasPorSemana = () => {
 
                         <DatePicker
                             onChange={onChange}
+                            picker='week'
                             disabledDate={disabledDate}
                             placeholder='Selecciona la fecha'
                         />
@@ -77,10 +78,10 @@ export const NoPermitidasPorSemana = () => {
                         </Button>
 
                         {data === null ? (
-                            <div className=''>
+                            <div className='middle-center'>
                                 <center>
-                                    <Title level={5}>Buscar Tipo de Incidencias</Title>
-                                    <CloseCircleOutlined 
+                                    <Title level={5}>Buscar Incidencias por semana</Title>
+                                    <FieldTimeOutlined 
                                         style={{
                                             fontSize: '100px',
                                             color: '#08c',
@@ -90,7 +91,7 @@ export const NoPermitidasPorSemana = () => {
                                 </center>
                             </div>
                         ) : (
-                            new GraficaNoPermitidas(data).render()
+                            new GraficaTiempoDeConexion(data).render()
                         )}
                     </center>
                 </Card>

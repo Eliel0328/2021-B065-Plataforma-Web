@@ -98,3 +98,10 @@
 /* .swal2-container {
     z-index: 1600;
 } */
+
+
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
