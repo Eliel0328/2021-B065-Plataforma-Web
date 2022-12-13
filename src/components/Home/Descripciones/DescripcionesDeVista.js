@@ -19,6 +19,8 @@ import brave from '../../../file/navegadores/brave.png';
 import edge from '../../../file/navegadores/edge.png';
 import opera from '../../../file/navegadores/opera.png';
 import cap_registro from '../../../file/vistas/registro.png';
+import cap_excepciones from '../../../file/vistas/excepciones.png';
+import cap_tutor from '../../../file/vistas/tutor.png';
 import { Link, Navigate } from 'react-router-dom';
 import { LoginContext } from '../../../context/LoginContext';
 
@@ -97,8 +99,9 @@ const DescripcionesDeVista = () => {
     const { setCurrent } = useContext(LoginContext);
     const { Title, Paragraph, Text } = Typography;
 
-    const irRegistro = () => {
-        setCurrent('registro');
+    const irSeccion = (seccion) => {
+        window.scrollTo(0, 0);
+        setCurrent(seccion);
     };
 
     return (
@@ -157,9 +160,10 @@ const DescripcionesDeVista = () => {
                         <Col span={10} style={{ padding: '5%' }}>
                             <Image alt='Captura de Registro' src={cap_registro} />
                             <Link to='/registro'>
-                                <Button onClick={irRegistro}>Ir a Registro</Button>
+                                <Button onClick={() => irSeccion('registro')}>
+                                    Ir a Registro
+                                </Button>
                             </Link>
-                            ,
                         </Col>
                         <Col span={10} style={{ padding: '10px' }}>
                             <Typography>
@@ -176,20 +180,66 @@ const DescripcionesDeVista = () => {
                 </div>
                 <div>
                     <Row className='center' style={contentStyle}>
-                        <Col span={10}>
+                        <Col span={10} style={{ padding: '10px' }}>
                             <Typography>
                                 <Title level={2}>Excepciones</Title>
-                                <Paragraph className='txt-ct'></Paragraph>
+                                <Paragraph className='txt-ct'>
+                                    En la sección de excepciones podrás encontrar las
+                                    paginas que no es necesario que clasifiquemos. Estas
+                                    se clasificarán en dos:
+                                </Paragraph>
+                                <Paragraph className='txt-ct'>
+                                    <Text strong>• Excepciones</Text>: Estas paginas no se
+                                    intentarán clasificar ya que el que pertenezcan a esta
+                                    lista, serán consideradas como permitidas por el tutor
+                                    para que su tutorado visite y navegue sin aviso
+                                    alguno.
+                                </Paragraph>
+                                <Paragraph className='txt-ct'>
+                                    <Text strong>• No Permitidas</Text>: Estas páginas no
+                                    se intentarán clasificar, ya que el que pertenezcan a
+                                    esta lista, significa que son consideradas
+                                    directamente como ofensivas, agresivas y/o vulgares,
+                                    por lo que su visita será registrada.
+                                </Paragraph>
                             </Typography>
+                        </Col>
+                        <Col span={10} style={{ padding: '5%' }}>
+                            <Image alt='Captura de Excepciones' src={cap_excepciones} />
+                            <Link to='/excepciones'>
+                                <Button onClick={() => irSeccion('excepciones')}>
+                                    Ir a Excepciones
+                                </Button>
+                            </Link>
                         </Col>
                     </Row>
                 </div>
                 <div>
                     <Row className='center' style={contentStyle}>
-                        <Col span={12}>
+                        <Col span={10} style={{ padding: '5%' }}>
+                            <Image alt='Captura de Registro' src={cap_tutor} />
+                            <Link to='/perfil'>
+                                <Button onClick={() => irSeccion('tutor')}>
+                                    Ir a Tutor
+                                </Button>
+                            </Link>
+                        </Col>
+                        <Col span={10} style={{ padding: '10px' }}>
                             <Typography>
                                 <Title level={2}>Tutor</Title>
-                                <Paragraph className='txt-ct'></Paragraph>
+                                <Paragraph className='txt-ct'>
+                                    La sección para el tutor permite ver y configurar el
+                                    sistema según lo decida. Puede modificar el número de
+                                    incidencias minimas para el registro de información,
+                                </Paragraph>
+                                <Paragraph className='txt-ct'>
+                                    puede encender o apagar la extensión. Además podrá
+                                    acceder a graficas que resumen algunos datos
+                                    compilados por el sistema como las incidencias
+                                    semanales, el tipo de incidencias por dia, la visita a
+                                    sitios No Permitidos y el tiempo de conexión de la
+                                    extensión.
+                                </Paragraph>
                             </Typography>
                         </Col>
                     </Row>

@@ -132,7 +132,7 @@ export const BlackList = () => {
 
     return (
         <>
-            <Title level={2}>Lista Negra</Title>
+            <Title level={2}>No Permitidas</Title>
 
             <Button
                 onClick={showModal}

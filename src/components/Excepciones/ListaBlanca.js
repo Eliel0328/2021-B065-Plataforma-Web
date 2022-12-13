@@ -95,7 +95,7 @@ export const WhiteList = () => {
 
     return (
         <>
-            <Title level={2}>Lista blanca</Title>
+            <Title level={2}>Excepciones</Title>
             <Button
                 onClick={showModal}
                 type='primary'

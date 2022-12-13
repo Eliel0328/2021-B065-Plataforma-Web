@@ -30,7 +30,7 @@ const Excepciones = () => {
                                     type= {listaExceptiones ? 'primary': 'ghost'} 
                                     onClick={() => onPressWhiteList()}
                                 >
-                                    Lista Blanca
+                                    Excepciones
                                 </Button>,
                                 <Button
                                     key='2'
@@ -38,7 +38,7 @@ const Excepciones = () => {
                                     type= {!listaExceptiones ? 'primary': 'ghost'} 
                                     onClick={() => onPressBlackList()}
                                 >
-                                    Lista Negra
+                                    No Permitidas
                                 </Button>,
                             ]}
                         >
@@ -58,7 +58,7 @@ const Excepciones = () => {
                                     <br></br>
                                     En caso de que el usuario entre a una página
                                     de la lista negra se ignorará la evaluación
-                                    de contenido y se notificará directamente.
+                                    de contenido y registrará la visita.
                                 </p>
                             </Paragraph>
                         </PageHeader>
