@@ -14,6 +14,28 @@ import {
 import ManualExtension from './Manuales/ManualExtension';
 import ManualUsoExtension from './Manuales/ManualUsoExtension';
 
+const data = [
+    {
+        key: '100',
+        title: 'Manual de Instalación de Extensión',
+        component: <ManualExtension />,
+    },
+    {
+        key: '101',
+        title: 'Manual de uso de Extensión Web',
+        component: <ManualUsoExtension />,
+    },
+    { key: '102', title: 'Manual de Registro de Cuenta', component: '' },
+    { key: '103', title: 'Manual de Inicio de sesion', component: '' },
+    { key: '104', title: 'Manual de Calificado de Contenido Clasificado', component: '' },
+    {
+        key: '105',
+        title: 'Manual de Registro de Excepciones y No Permitidas',
+        component: '',
+    },
+    { key: '106', title: 'Manual de Configuraciones del Tutor', component: '' },
+];
+
 const Manuales = () => {
     const { Title, Paragraph, Text, Link } = Typography;
 
@@ -34,22 +56,18 @@ const Manuales = () => {
                         <Typography>
                             <Title className='center'>Manuales</Title>
                         </Typography>
-                        <div style={{ marginTop: 50 }}>
-                        <Divider />
-                            <Typography>
-                                <Title level={2}>
-                                    Manual de Instalación de Extensión
-                                </Title>
-                            </Typography>
-                            <ManualExtension />
-                        </div>
-                        <div style={{ marginTop: 50 }}>
-                        <Divider />
-                            <Typography>
-                                <Title level={2}>Manual de uso de Extensión Web</Title>
-                            </Typography>
-                            <ManualUsoExtension />
-                        </div>
+
+                        {data.map((e) => {
+                            return (
+                                <div style={{ marginTop: 50 }} key={e.key}>
+                                    <Divider />
+                                    <Typography>
+                                        <Title level={2}>{e.title}</Title>
+                                    </Typography>
+                                    {e.component}
+                                </div>
+                            );
+                        })}
                     </div>
                 </Card>
             </Layout>
