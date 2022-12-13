@@ -13,6 +13,8 @@ import {
 } from 'antd';
 import ManualExtension from './Manuales/ManualExtension';
 import ManualUsoExtension from './Manuales/ManualUsoExtension';
+import ManualCalificadoContenido from './Manuales/ManualCalificadoContenido';
+import ManualExcepciones from './Manuales/ManualExcepciones';
 
 const data = [
     {
@@ -27,11 +29,15 @@ const data = [
     },
     { key: '102', title: 'Manual de Registro de Cuenta', component: '' },
     { key: '103', title: 'Manual de Inicio de sesion', component: '' },
-    { key: '104', title: 'Manual de Calificado de Contenido Clasificado', component: '' },
+    {
+        key: '104',
+        title: 'Manual de Calificado de Contenido Clasificado',
+        component: <ManualCalificadoContenido />,
+    },
     {
         key: '105',
         title: 'Manual de Registro de Excepciones y No Permitidas',
-        component: '',
+        component: <ManualExcepciones />,
     },
     { key: '106', title: 'Manual de Configuraciones del Tutor', component: '' },
 ];

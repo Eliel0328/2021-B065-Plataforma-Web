@@ -65,8 +65,16 @@ const itemsWithToken = [
 
 const RouterPage = () => {
     // const [current, setCurrent] = useState('home');
-    const { token, setToken, getToken, logoutUser, setUserData, getUserData, current, setCurrent } =
-        useContext(LoginContext);
+    const {
+        token,
+        setToken,
+        getToken,
+        logoutUser,
+        setUserData,
+        getUserData,
+        current,
+        setCurrent,
+    } = useContext(LoginContext);
 
     useEffect(() => {
         let aux = getToken();
@@ -80,7 +88,6 @@ const RouterPage = () => {
     }, []);
 
     const onClick = (e) => {
-        setCurrent(e.key);
         if (e.key === 'cerrarSesion') {
             Swal.fire({
                 title: 'Desea cerrar sesion?',
@@ -97,6 +104,9 @@ const RouterPage = () => {
                     logoutUser();
                 }
             });
+        } else {
+            setCurrent(e.key);
+            window.scrollTo(0, 0);
         }
     };
 
@@ -138,7 +148,7 @@ const RouterPage = () => {
                             margin: '80px 20px 0px 20px',
                             padding: 15,
                             minHeight: 800,
-                            background: "#F0F2F5"
+                            background: '#F0F2F5',
                         }}
                     >
                         <Routes>
@@ -185,10 +195,7 @@ const RouterPage = () => {
                             textAlign: 'center',
                         }}
                     >
-                        <img
-                            width={40}
-                            src={logo}
-                        />
+                        <img width={40} src={logo} />
                         Vigilantt ©2022
                     </Footer>
                 </Layout>
