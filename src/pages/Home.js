@@ -7,8 +7,8 @@ import '../css/basicStyle.css';
 
 const Home = () => {
     const [pestaña1, setPestaña1] = useState(false);
-    const [pestaña2, setPestaña2] = useState(true);
-    const [pestaña3, setPestaña3] = useState(false);
+    const [pestaña2, setPestaña2] = useState(false);
+    const [pestaña3, setPestaña3] = useState(true);
 
     const onPressBtn1 = () => {
         setPestaña1(true);
