@@ -15,6 +15,9 @@ import ManualExtension from './Manuales/ManualExtension';
 import ManualUsoExtension from './Manuales/ManualUsoExtension';
 import ManualCalificadoContenido from './Manuales/ManualCalificadoContenido';
 import ManualExcepciones from './Manuales/ManualExcepciones';
+import ManualTutor from './Manuales/ManualTutor';
+import ManualRegistroCuenta from './Manuales/ManualRegistroCuenta';
+import ManualInicioSesion from './Manuales/ManualInicioSesion';
 
 const data = [
     {
@@ -27,8 +30,16 @@ const data = [
         title: 'Manual de uso de Extensión Web',
         component: <ManualUsoExtension />,
     },
-    { key: '102', title: 'Manual de Registro de Cuenta', component: '' },
-    { key: '103', title: 'Manual de Inicio de sesion', component: '' },
+    {
+        key: '102',
+        title: 'Manual de Registro de Cuenta',
+        component: <ManualRegistroCuenta />,
+    },
+    {
+        key: '103',
+        title: 'Manual de Inicio de sesion',
+        component: <ManualInicioSesion />,
+    },
     {
         key: '104',
         title: 'Manual de Calificado de Contenido Clasificado',
@@ -39,7 +50,11 @@ const data = [
         title: 'Manual de Registro de Excepciones y No Permitidas',
         component: <ManualExcepciones />,
     },
-    { key: '106', title: 'Manual de Configuraciones del Tutor', component: '' },
+    {
+        key: '106',
+        title: 'Manual de Configuraciones del Tutor',
+        component: <ManualTutor />,
+    },
 ];
 
 const Manuales = () => {

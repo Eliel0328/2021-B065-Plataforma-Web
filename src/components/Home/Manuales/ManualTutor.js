@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { Button, Card, Divider, Image, message, Steps, Typography } from 'antd';
-import step_1 from '../../../file/excepciones/step_1.png';
-import step_2 from '../../../file/excepciones/step_2.png';
-import step_3 from '../../../file/excepciones/step_3.png';
-import step_4 from '../../../file/excepciones/step_4.png';
-import step_5 from '../../../file/excepciones/step_5.png';
+import step_1 from '../../../file/tutor/step_1.png';
+import step_2 from '../../../file/tutor/step_2.png';
+import step_3 from '../../../file/tutor/step_3.png';
+import step_4 from '../../../file/tutor/step_4.png';
+import step_5 from '../../../file/tutor/step_5.png';
 const { Text } = Typography;
 
-export default function ManualExcepciones() {
+export default function ManualTutor() {
     const { Step } = Steps;
     const [current, setCurrent] = useState(0);
 
@@ -22,41 +22,40 @@ export default function ManualExcepciones() {
         {
             id: '100',
             title: 'Paso 1',
-            description: 'Seleccionar el tipo de página a Registrar',
-            content: <SeleccionarTipo />,
+            description: 'Inciendecias y Extensión',
+            content: <IncidenciasExtension />,
         },
         {
             id: '101',
             title: 'Paso 2',
-            description: 'Agregar Página',
-            content: <AgregarPagina />,
+            description: 'Incidencias semanales',
+            content: <IncidenciasSemanales />,
         },
         {
             id: '102',
             title: 'Paso 3',
-            description: 'Agregar Excepción',
-            content: <AgregarExcepcion />,
+            description: 'Tipos de incidencias',
+            content: <TipoDeIncidencias />,
         },
         {
             id: '103',
             title: 'Paso 4',
-            description: 'Agregar No Permitida',
-            content: <AgregarNoPermitida />,
+            description: 'Sitios No Permitidos',
+            content: <SitioNoPermitidos />,
         },
         {
             id: '104',
             title: 'Paso 5',
-            description: 'Eliminar Página de una lista',
-            content: <EliminarPagina />,
+            description: 'Tiempo de conexion',
+            content: <TiempoDeConexion />,
         },
     ];
 
     return (
         <div className='scroll_div' style={{ paddingBottom: 20 }}>
             <div className='mg-10'>
-                Las excepciones y los sitios No Permitidos complementan las funciones
-                disponibles del sistema y evitan mostrar información extra que podria
-                saturar al tutor.
+                Esta sección explica la configuracion del sistema y también da un
+                introducción a las graficas disponibles para el tutor.
             </div>
             <Steps direction='horizontal' current={current} progressDot>
                 {data.map((item, index) => (
@@ -94,7 +93,7 @@ export default function ManualExcepciones() {
                         type='primary'
                         onClick={() =>
                             message.success(
-                                'Manual de Registro de Excepciones y No Permitidas Revisado!'
+                                'Manual de Configuraciones del Tutor Revisado!'
                             )
                         }
                     >
@@ -106,30 +105,39 @@ export default function ManualExcepciones() {
     );
 }
 
-const SeleccionarTipo = () => {
+const IncidenciasExtension = () => {
     return (
         <>
-            <p>Seleccionar la lista a la que la página va a ser registrada.</p>
+            <p>Control de incidencias y Extensión</p>
             <Divider />
             <Typography className='txt-ct'>
-                En parte Superior Derecha de esta sección se encuentran dos botones para
-                seleccionar el tipo de lista a la que se agregará la página.
+                Para poder registrar las incidencias se busca el tutor establezca un
+                minimo de incidencias para su registro.
+            </Typography>
+            <Typography className='txt-ct'>
+                También se tiene la opción de enceder o apagar la Extensión según se
+                necesite.
             </Typography>
             <div style={{ marginTop: 30 }} align='center'>
-                <Image preview={false} src={step_1} alt='step 1' />
+                <Image
+                    style={{ maxHeight: 500 }}
+                    preview={false}
+                    src={step_1}
+                    alt='step 1'
+                />
             </div>
         </>
     );
 };
 
-const AgregarPagina = () => {
+const IncidenciasSemanales = () => {
     return (
         <>
-            <p>Dar clic en la opción de agregar página.</p>
+            <p>El número de incidencias por cada semana</p>
             <Divider />
             <Typography className='txt-ct'>
-                Con el tipo de lista seleccionado, se debe seleccionar el boton que
-                aparece en el inicio de la lista.
+                En la siguiente grafica se podran seleccionar una semana para poder
+                revisar la cantidad de incidencias de cada semana.
             </Typography>
             <div style={{ marginTop: 30 }} align='center'>
                 <Image
@@ -143,17 +151,15 @@ const AgregarPagina = () => {
     );
 };
 
-const AgregarExcepcion = () => {
+const TipoDeIncidencias = () => {
     return (
         <>
-            <p>Agregar página como Excepción.</p>
+            <p>Tipo de Incidencias por día</p>
             <Divider />
             <Typography className='txt-ct'>
-                Se desplegará un modal en el que se debe ingresar la dirección de la
-                página (de esta se extrae el dominio) con lo que se puede filtrar los
-                siguientes contenidos provenientes de esta dirección. Ademas, se debe
-                ingresar una breve descripcion del porque este sitio se considera una
-                Excepción.
+                Selecciona la fecha para ver el tipo de incidencias registradas durante
+                ese dia. Para revisar en profunidad estas incidencias debe ingresar al
+                registro y revisar el registro usando los filtros para la fecha.
             </Typography>
             <div style={{ marginTop: 30 }} align='center'>
                 <Image
@@ -167,19 +173,15 @@ const AgregarExcepcion = () => {
     );
 };
 
-const AgregarNoPermitida = () => {
+const SitioNoPermitidos = () => {
     return (
         <>
-            <p>Agregar página como No Permitida.</p>
+            <p>Sitios no Permitidos por día</p>
             <Divider />
             <Typography className='txt-ct'>
-                Se desplegará un modal en el que se debe ingresar la dirección de la
-                página (de esta se extrae el dominio) con lo que se puede filtrar los
-                siguientes contenidos provenientes de esta dirección. Ademas, se debe
-                ingresar una breve descripcion del porque este sitio se considera un sitio
-                No Permitido. Si lo desea también es posible dar una etiqueta al sitio. La
-                información de los sitios no permitidos visitados podran verse en la
-                sección del tutor.
+                Selecciona la fecha para ver las visitas a los sitios no permitidos dentro
+                de una fecha especifica. Para ver el listado completo de sitios No
+                Permitidos revisar la seccion de excepciones.
             </Typography>
             <div style={{ marginTop: 30 }} align='center'>
                 <Image
@@ -193,14 +195,15 @@ const AgregarNoPermitida = () => {
     );
 };
 
-const EliminarPagina = () => {
+const TiempoDeConexion = () => {
     return (
         <>
-            <p>Eliminar página.</p>
+            <p>Tiempo de Conexion por Semana</p>
             <Divider />
             <Typography className='txt-ct'>
-                El procedimiento para eliminar una página de cualquiera de las listas es
-                el mismo. Se debe seccionar la opción de Borrar Página.
+                En la siguiente grafica se podran seleccionar una semana para poder
+                revisar el tiempo de conexion por semana. Esto tiene el proposito de
+                comprobar que la extension este conectada y funcionando correctamente.
             </Typography>
             <div style={{ marginTop: 30 }} align='center'>
                 <Image

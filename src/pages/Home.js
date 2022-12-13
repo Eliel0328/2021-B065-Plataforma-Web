@@ -6,9 +6,9 @@ import Manuales from '../components/Home/Manuales';
 import '../css/basicStyle.css';
 
 const Home = () => {
-    const [pestaña1, setPestaña1] = useState(false);
+    const [pestaña1, setPestaña1] = useState(true);
     const [pestaña2, setPestaña2] = useState(false);
-    const [pestaña3, setPestaña3] = useState(true);
+    const [pestaña3, setPestaña3] = useState(false);
 
     const onPressBtn1 = () => {
         setPestaña1(true);
