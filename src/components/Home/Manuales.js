@@ -1,6 +1,18 @@
 import React, { useState } from 'react';
-import { Button, Card, Col, Image, Layout, message, Row, Steps, Typography } from 'antd';
+import {
+    Button,
+    Card,
+    Col,
+    Divider,
+    Image,
+    Layout,
+    message,
+    Row,
+    Steps,
+    Typography,
+} from 'antd';
 import ManualExtension from './Manuales/ManualExtension';
+import ManualUsoExtension from './Manuales/ManualUsoExtension';
 
 const Manuales = () => {
     const { Title, Paragraph, Text, Link } = Typography;
@@ -22,12 +34,21 @@ const Manuales = () => {
                         <Typography>
                             <Title className='center'>Manuales</Title>
                         </Typography>
-
-                        <div>
+                        <div style={{ marginTop: 50 }}>
+                        <Divider />
                             <Typography>
-                                <Title level={2}>Instalación de Extensión</Title>
+                                <Title level={2}>
+                                    Manual de Instalación de Extensión
+                                </Title>
                             </Typography>
-                            <ManualExtension></ManualExtension>
+                            <ManualExtension />
+                        </div>
+                        <div style={{ marginTop: 50 }}>
+                        <Divider />
+                            <Typography>
+                                <Title level={2}>Manual de uso de Extensión Web</Title>
+                            </Typography>
+                            <ManualUsoExtension />
                         </div>
                     </div>
                 </Card>

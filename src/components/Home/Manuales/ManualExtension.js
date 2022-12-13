@@ -77,7 +77,7 @@ export default function ManualExtension() {
                     <Step key={index} title={item.title} description={item.description} />
                 ))}
             </Steps>
-            <div className='steps-content center'>
+            <div className='steps-content'>
                 <Card
                     style={{
                         width: 800,
@@ -106,7 +106,7 @@ export default function ManualExtension() {
                 {current === data.length - 1 && (
                     <Button
                         type='primary'
-                        onClick={() => message.success('Processing complete!')}
+                        onClick={() => message.success('Manual de Instalación de Extensión Revisado!')}
                     >
                         Terminado
                     </Button>
