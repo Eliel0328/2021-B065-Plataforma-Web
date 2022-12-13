@@ -7,6 +7,7 @@ export const UPDATE_CONFIG = 'UPDATE_CONFIG';
 export const SET_TUTOR = 'SET_TUTOR';
 export const SET_INCIDECIAS_TUTOR = 'SET_INCIDECIAS_TUTOR';
 export const SET_ESTADO_EXTENSION = 'SET_ESTADO_EXTENSION';
+export const SET_CURRENT = 'SET_CURRENT';
 
 // Registro de contenido ofensivo
 export const OBTENER_REGISTRO = 'OBTENER_REGISTRO';

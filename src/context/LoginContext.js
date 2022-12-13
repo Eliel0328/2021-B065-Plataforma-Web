@@ -4,6 +4,7 @@ import LoginReducer from '../reducer/LoginReducer';
 import axios from 'axios';
 
 import {
+    SET_CURRENT,
     SET_ESTADO_EXTENSION,
     SET_INCIDECIAS_TUTOR,
     SET_TOKEN,
@@ -26,6 +27,7 @@ export const LoginContextProvider = (props) => {
         token: null,
         user: null,
         tutor: null,
+        current: 'home',
     };
 
     const [state, dispatch] = useReducer(LoginReducer, initialState);
@@ -278,12 +280,16 @@ export const LoginContextProvider = (props) => {
         }
     };
 
+    const setCurrent = (data) => {
+        dispatch({ type: SET_CURRENT, payload: data });
+    };
     return (
         <LoginContext.Provider
             value={{
                 token: state.token,
                 user: state.user,
                 tutor: state.tutor,
+                current: state.current,
                 loginUser,
                 logoutUser,
                 setToken,
@@ -299,6 +305,7 @@ export const LoginContextProvider = (props) => {
                 getTutor,
                 setNumeroIncidencias,
                 setEstadoExtension,
+                setCurrent,
             }}
         >
             {props.children}

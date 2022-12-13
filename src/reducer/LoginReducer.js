@@ -1,5 +1,6 @@
 import {
     REGISTRAR_USUARIO,
+    SET_CURRENT,
     SET_ESTADO_EXTENSION,
     SET_INCIDECIAS_TUTOR,
     SET_TOKEN,
@@ -48,6 +49,11 @@ export default (state, action) => {
                     incidencias: action.payload.incidencias,
                     encender: action.payload.encender,
                 },
+            };
+        case SET_CURRENT:
+            return {
+                ...state,
+                current: action.payload,
             };
         default:
             return state;

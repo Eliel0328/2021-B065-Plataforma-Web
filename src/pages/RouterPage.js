@@ -64,8 +64,8 @@ const itemsWithToken = [
 ];
 
 const RouterPage = () => {
-    const [current, setCurrent] = useState('home');
-    const { token, setToken, getToken, logoutUser, setUserData, getUserData } =
+    // const [current, setCurrent] = useState('home');
+    const { token, setToken, getToken, logoutUser, setUserData, getUserData, current, setCurrent } =
         useContext(LoginContext);
 
     useEffect(() => {
