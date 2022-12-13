@@ -121,3 +121,9 @@
 .txt-ct{
     text-align: justify;
 }
+
+.mg-10{
+    margin-bottom: 15px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
