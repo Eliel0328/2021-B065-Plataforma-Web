@@ -111,11 +111,9 @@ const DescripcionesDeVista = () => {
                     <Row className='center' style={contentStyle}>
                         <Col span={10}>
                             <Typography>
-                                <Title level={2}>
-                                    Navegadores en los que funcionan la extensión
-                                </Title>
+                                <Title level={2}>Navegadores</Title>
                                 <Paragraph className='txt-ct'>
-                                    La extensión web esta diseñada para funcionar en los
+                                    La extensión web está diseñada para funcionar en los
                                     navegadores compatibles con Chrome. La extensión de
                                     Vigilatt fue probada con los siguientes navegadores
                                 </Paragraph>
@@ -172,7 +170,7 @@ const DescripcionesDeVista = () => {
                                     La sección de registro tiene el objetivo de mostrar el
                                     contenido clasificado. Para lograr esto muestra los
                                     datos del sitio visitado, el número de incidencias y
-                                    las mismas incidencias a traves de un modal.
+                                    las mismas incidencias a través de un modal.
                                 </Paragraph>
                             </Typography>
                         </Col>
@@ -185,11 +183,11 @@ const DescripcionesDeVista = () => {
                                 <Title level={2}>Excepciones</Title>
                                 <Paragraph className='txt-ct'>
                                     En la sección de excepciones podrás encontrar las
-                                    paginas que no es necesario que clasifiquemos. Estas
+                                    páginas que no es necesario que clasifiquemos. Estas
                                     se clasificarán en dos:
                                 </Paragraph>
                                 <Paragraph className='txt-ct'>
-                                    <Text strong>• Excepciones</Text>: Estas paginas no se
+                                    <Text strong>• Excepciones</Text>: Estas páginas no se
                                     intentarán clasificar ya que el que pertenezcan a esta
                                     lista, serán consideradas como permitidas por el tutor
                                     para que su tutorado visite y navegue sin aviso
@@ -230,10 +228,10 @@ const DescripcionesDeVista = () => {
                                 <Paragraph className='txt-ct'>
                                     La sección para el tutor permite ver y configurar el
                                     sistema según lo decida. Puede modificar el número de
-                                    incidencias minimas para el registro de información,
+                                    incidencias mínimas para el registro de información.
                                 </Paragraph>
                                 <Paragraph className='txt-ct'>
-                                    puede encender o apagar la extensión. Además podrá
+                                    Puede encender o apagar la extensión. Además, podrá
                                     acceder a graficas que resumen algunos datos
                                     compilados por el sistema como las incidencias
                                     semanales, el tipo de incidencias por dia, la visita a

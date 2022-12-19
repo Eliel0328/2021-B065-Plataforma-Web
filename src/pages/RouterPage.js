@@ -90,13 +90,13 @@ const RouterPage = () => {
     const onClick = (e) => {
         if (e.key === 'cerrarSesion') {
             Swal.fire({
-                title: 'Desea cerrar sesion?',
-                text: 'Esto no cerrara sesion en la extension',
+                title: '¿Desea cerrar sesión?',
+                text: 'Esta accción no cerrará sesión en la extensión',
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Cerrar Sesion',
+                confirmButtonText: 'Cerrar Sesión',
                 cancelButtonText: 'Cancelar',
             }).then((result) => {
                 if (result.isConfirmed) {

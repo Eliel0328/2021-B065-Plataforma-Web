@@ -11,9 +11,11 @@ export default function ManualUsoExtension() {
     const [current, setCurrent] = useState(0);
 
     const next = () => {
+        document.getElementById('manual').parentElement.parentElement.scrollIntoView();
         setCurrent(current + 1);
     };
     const prev = () => {
+        document.getElementById('manual').parentElement.parentElement.scrollIntoView();
         setCurrent(current - 1);
     };
 
@@ -39,13 +41,13 @@ export default function ManualUsoExtension() {
     ];
 
     return (
-        <div className='scroll_div' style={{ paddingBottom: 20 }}>
+        <div className='scroll_div' style={{ paddingBottom: 20 }} id='manual'>
             <div className='mg-10'>
-                A continuación se muestra como usar la extensión. Es importante recordar
+                A continuación, se muestra cómo usar la extensión. Es importante recordar
                 que es necesario tener una cuenta de tutor. Esta cuenta puede obtenerse en
-                la plataforma. Además, la extensión esta limitada a solo vincularse a una
+                la plataforma. Además, la extensión está limitada a solo vincularse a una
                 cuenta, por lo que este manual de uso se limita a mostrar como vincular la
-                extension con una cuenta y los mensajes posibles que la extension pude
+                extensión con una cuenta y los mensajes posibles que la extensión pude
                 regresar al usuario.
             </div>
             <Steps direction='horizontal' current={current} progressDot>
@@ -100,10 +102,10 @@ const IniciarSesion = () => {
             <p>Vincular extensión con cuenta de tutor</p>
             <Divider />
             <p>
-                En parte superior derecha del navegador podra ver un botón que permite
+                En parte superior derecha del navegador podrá ver un botón que permite
                 mostrar el listado de las extensiones. Se debe seleccionar la extensión y
                 posteriormente iniciar sesión con los datos solicitados. Este es el único
-                proceso que se debe realizar para el funcionamiento de la extension.
+                proceso que se debe realizar para el funcionamiento de la extensión.
             </p>
 
             <div style={{ marginTop: 30 }} align='center'>

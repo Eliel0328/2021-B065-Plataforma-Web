@@ -52,7 +52,6 @@ export const TipoIncidencias = () => {
             <div className='site-card-border-less-wrapper'>
                 <Card
                     bordered={false}
-                    hoverable={true}
                     style={{
                         width: 800,
                         minHeight: 500,
@@ -61,10 +60,10 @@ export const TipoIncidencias = () => {
                     <center>
                         <Title level={4}>Tipo de Incidencias</Title>
                         <p>
-                            Seleccion la fecha para ver el tipo de incidencias registradas
-                            durante ese dia. Para revisar en profunidad estas incidencias
-                            debe ingresar al registro y revisar el registro usando los
-                            filtros para la fecha.
+                            Selecciona la fecha para ver el tipo de incidencias
+                            registradas durante ese día. Para revisar en profundidad estas
+                            incidencias debe ingresar al registro y revisar el registro
+                            usando los filtros para la fecha.
                         </p>
 
                         <DatePicker
@@ -79,7 +78,7 @@ export const TipoIncidencias = () => {
                         {data === null ? (
                             <div className='middle-center'>
                                 <center>
-                                    <Title level={5}>Buscar Incidencias por semana</Title>
+                                    <Title level={5}>Buscar Tipo de Incidencias</Title>
                                     <BarChartOutlined
                                         style={{
                                             fontSize: '100px',

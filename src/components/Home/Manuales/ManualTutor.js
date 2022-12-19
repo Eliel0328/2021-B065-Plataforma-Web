@@ -12,9 +12,11 @@ export default function ManualTutor() {
     const [current, setCurrent] = useState(0);
 
     const next = () => {
+        document.getElementById('manual').parentElement.parentElement.scrollIntoView();
         setCurrent(current + 1);
     };
     const prev = () => {
+        document.getElementById('manual').parentElement.parentElement.scrollIntoView();
         setCurrent(current - 1);
     };
 
@@ -52,7 +54,7 @@ export default function ManualTutor() {
     ];
 
     return (
-        <div className='scroll_div' style={{ paddingBottom: 20 }}>
+        <div className='scroll_div' style={{ paddingBottom: 20 }} id='manual'>
             <div className='mg-10'>
                 Esta sección explica la configuracion del sistema y también da un
                 introducción a las graficas disponibles para el tutor.
@@ -112,10 +114,10 @@ const IncidenciasExtension = () => {
             <Divider />
             <Typography className='txt-ct'>
                 Para poder registrar las incidencias se busca el tutor establezca un
-                minimo de incidencias para su registro.
+                mínimo de incidencias para su registro.
             </Typography>
             <Typography className='txt-ct'>
-                También se tiene la opción de enceder o apagar la Extensión según se
+                También se tiene la opción de encender o apagar la Extensión según se
                 necesite.
             </Typography>
             <div style={{ marginTop: 30 }} align='center'>
@@ -136,7 +138,7 @@ const IncidenciasSemanales = () => {
             <p>El número de incidencias por cada semana</p>
             <Divider />
             <Typography className='txt-ct'>
-                En la siguiente grafica se podran seleccionar una semana para poder
+                En la siguiente grafica se podrán seleccionar una semana para poder
                 revisar la cantidad de incidencias de cada semana.
             </Typography>
             <div style={{ marginTop: 30 }} align='center'>
@@ -158,7 +160,7 @@ const TipoDeIncidencias = () => {
             <Divider />
             <Typography className='txt-ct'>
                 Selecciona la fecha para ver el tipo de incidencias registradas durante
-                ese dia. Para revisar en profunidad estas incidencias debe ingresar al
+                ese día. Para revisar en profundidad estas incidencias debe ingresar al
                 registro y revisar el registro usando los filtros para la fecha.
             </Typography>
             <div style={{ marginTop: 30 }} align='center'>
@@ -180,8 +182,8 @@ const SitioNoPermitidos = () => {
             <Divider />
             <Typography className='txt-ct'>
                 Selecciona la fecha para ver las visitas a los sitios no permitidos dentro
-                de una fecha especifica. Para ver el listado completo de sitios No
-                Permitidos revisar la seccion de excepciones.
+                de una fecha específica. Para ver el listado completo de sitios No
+                Permitidos revisar la sección de excepciones.
             </Typography>
             <div style={{ marginTop: 30 }} align='center'>
                 <Image
@@ -201,9 +203,9 @@ const TiempoDeConexion = () => {
             <p>Tiempo de Conexion por Semana</p>
             <Divider />
             <Typography className='txt-ct'>
-                En la siguiente grafica se podran seleccionar una semana para poder
-                revisar el tiempo de conexion por semana. Esto tiene el proposito de
-                comprobar que la extension este conectada y funcionando correctamente.
+                En la siguiente grafica se podrán seleccionar una semana para poder
+                revisar el tiempo de conexión por semana. Esto tiene el propósito de
+                comprobar que la extensión este conectada y funcionando correctamente.
             </Typography>
             <div style={{ marginTop: 30 }} align='center'>
                 <Image

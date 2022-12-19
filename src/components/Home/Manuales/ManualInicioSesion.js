@@ -7,9 +7,11 @@ export default function ManualInicioSesion() {
     const [current, setCurrent] = useState(0);
 
     const next = () => {
+        document.getElementById('manual').parentElement.parentElement.scrollIntoView();
         setCurrent(current + 1);
     };
     const prev = () => {
+        document.getElementById('manual').parentElement.parentElement.scrollIntoView();
         setCurrent(current - 1);
     };
 
@@ -23,9 +25,9 @@ export default function ManualInicioSesion() {
     ];
 
     return (
-        <div className='scroll_div' style={{ paddingBottom: 20 }}>
+        <div className='scroll_div' style={{ paddingBottom: 20 }} id='manual'>
             <div className='mg-10'>
-                El proceso para iniciar sesion en la plataforma consta de un unico paso.
+                El proceso para iniciar sesión en la plataforma consta de un único paso.
             </div>
             <Steps direction='horizontal' current={current} progressDot>
                 {data.map((item, index) => (
@@ -76,7 +78,7 @@ export default function ManualInicioSesion() {
 const RellenarFormulario = () => {
     return (
         <>
-            <p>Formulario para Iniciar sesion.</p>
+            <p>Formulario para Iniciar Sesión.</p>
             <Typography className='txt-ct'>
                 Para iniciar sesión es necesario usar el correo y contraseña vinculado a
                 la cuenta

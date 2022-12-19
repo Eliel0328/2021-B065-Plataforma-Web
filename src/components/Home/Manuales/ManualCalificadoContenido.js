@@ -9,9 +9,11 @@ export default function ManualCalificadoContenido() {
     const [current, setCurrent] = useState(0);
 
     const next = () => {
+        document.getElementById('manual').parentElement.parentElement.scrollIntoView();
         setCurrent(current + 1);
     };
     const prev = () => {
+        document.getElementById('manual').parentElement.parentElement.scrollIntoView();
         setCurrent(current - 1);
     };
 
@@ -31,7 +33,7 @@ export default function ManualCalificadoContenido() {
     ];
 
     return (
-        <div className='scroll_div' style={{ paddingBottom: 20 }}>
+        <div className='scroll_div' style={{ paddingBottom: 20 }} id='manual'>
             <div className='mg-10'>
                 Que el tutor pueda calificar el contenido que devuelve el clasificador
                 tiene como objetivo hacer crecer el dataset para ir mejorando la calidad
@@ -89,11 +91,11 @@ export default function ManualCalificadoContenido() {
 const IngresarRegistro = () => {
     return (
         <>
-            <p>Ingresando a la sección de Registro se encontrara la siguiente lista.</p>
+            <p>Ingresando a la sección de Registro se encontrará la siguiente lista.</p>
             <Divider />
             <Typography className='txt-ct'>
                 Dentro de la lista de podrá seleccionar las incidencias de una visita en
-                concreto seleccionando la opcion
+                concreto seleccionando la opción.
             </Typography>
             <Text keyboard>Ver Contenido</Text>
             <div style={{ marginTop: 30 }} align='center'>
@@ -111,7 +113,7 @@ const ClasificarGuardar = () => {
             <Typography className='txt-ct'>
                 En este modal podrá ver todas las incidencias registradas a la visita.
                 Además de las etiquetas asignadas a cada segmento de contenido. A la
-                derecha de cada tarjeta de segmento de contenido se encontraran algunas
+                derecha de cada tarjeta de segmento de contenido se encontrarán algunas
                 etiquetas y un cuadro de texto para que el tutor pueda dar su
                 clasificación y una breve justificación en caso de que lo desee.
             </Typography>

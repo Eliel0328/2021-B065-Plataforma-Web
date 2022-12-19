@@ -259,32 +259,23 @@ export const BlackList = () => {
                     <Divider />
                     El contenido de esta pagina en su mayoria usted la considera:
                     <center>
-                        <div>
-                            <div className='checkSeparation'>
-                                Vulgar：{' '}
-                                <Switch
-                                    checked={vulgarCheck}
-                                    onChange={toggleVulgarCheck}
-                                    disabled={isDetalles}
-                                />
-                            </div>
-                            <div className='checkSeparation'>
-                                Agresivo{' '}
-                                <Switch
-                                    checked={agresivoCheck}
-                                    onChange={toggleAgresivoCheck}
-                                    disabled={isDetalles}
-                                />
-                            </div>
-                            <div className='checkSeparation'>
-                                Ofensivo：{' '}
-                                <Switch
-                                    checked={ofensivoCheck}
-                                    onChange={toggleOfensivoCheck}
-                                    disabled={isDetalles}
-                                />
-                            </div>
-                        </div>
+                    <div className='mg-10' style={{ margin: '5px 5px' }}>
+                                    Vulgar:
+                                    <Switch
+                                        checked={vulgarCheck}
+                                        onChange={toggleVulgarCheck}
+                                    />{' '}
+                                    Agresivo:
+                                    <Switch
+                                        checked={agresivoCheck}
+                                        onChange={toggleAgresivoCheck}
+                                    />{' '}
+                                    Ofensivo:
+                                    <Switch
+                                        checked={ofensivoCheck}
+                                        onChange={toggleOfensivoCheck}
+                                    />
+                                </div>
                     </center>
                     <Divider />
                     <Form.Item

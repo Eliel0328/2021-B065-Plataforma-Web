@@ -21,44 +21,64 @@ import ManualInicioSesion from './Manuales/ManualInicioSesion';
 
 const data = [
     {
-        key: '100',
-        title: 'Manual de Instalación de Extensión',
+        key: 0,
+        title: 'Instalación de Extensión',
         component: <ManualExtension />,
     },
     {
-        key: '101',
-        title: 'Manual de uso de Extensión Web',
+        key: 1,
+        title: 'Uso de Extensión Web',
         component: <ManualUsoExtension />,
     },
     {
-        key: '102',
-        title: 'Manual de Registro de Cuenta',
+        key: 2,
+        title: 'Registro de Cuenta',
         component: <ManualRegistroCuenta />,
     },
     {
-        key: '103',
-        title: 'Manual de Inicio de sesion',
+        key: 3,
+        title: 'Inicio de Sesión',
         component: <ManualInicioSesion />,
     },
     {
-        key: '104',
-        title: 'Manual de Calificado de Contenido Clasificado',
+        key: 4,
+        title: 'Calificado de Contenido Clasificado',
         component: <ManualCalificadoContenido />,
     },
     {
-        key: '105',
-        title: 'Manual de Registro de Excepciones y No Permitidas',
+        key: 5,
+        title: 'Registro de Excepciones y No Permitidas',
         component: <ManualExcepciones />,
     },
     {
-        key: '106',
-        title: 'Manual de Configuraciones del Tutor',
+        key: 6,
+        title: 'Configuraciones del Tutor',
         component: <ManualTutor />,
     },
 ];
 
 const Manuales = () => {
     const { Title, Paragraph, Text, Link } = Typography;
+
+    const [manuales, setManuales] = useState([
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+    ]);
+
+    const setManualesFalse = () => {
+        return [false, false, false, false, false, false, false];
+    };
+
+    const onPressClick = (noManual) => {
+        let aux = setManualesFalse();
+        aux[noManual] = true;
+        setManuales(aux);
+    };
 
     return (
         <>
@@ -74,16 +94,45 @@ const Manuales = () => {
                             minHeight: 380,
                         }}
                     >
-                        <Typography>
+                        <Typography id='Manual'>
                             <Title className='center'>Manuales</Title>
                         </Typography>
+                        <div className='center'>
+                            <Title level={5} style={{ textAlign: 'center' }}>
+                                Es importante revisar la información disponible en cada
+                                uno de los manuales o segmentos de información para un
+                                mejor manejo del sistema.
+                            </Title>
+                        </div>
+                        <Divider />
 
-                        {data.map((e) => {
+                        <div
+                            style={{ display: 'flex', flexWrap: 'wrap' }}
+                            className='center'
+                        >
+                            {data.map((e, index) => {
+                                return (
+                                    <div>
+                                        <Button
+                                            className='mg-10'
+                                            type={manuales[index] ? 'primary' : 'ghost'}
+                                            onClick={() => onPressClick(index)}
+                                        >
+                                            {e.title}
+                                        </Button>
+                                    </div>
+                                );
+                            })}
+                        </div>
+                        {data.map((e, index) => {
                             return (
-                                <div style={{ marginTop: 50 }} key={e.key}>
+                                <div
+                                    key={e.key}
+                                    className={manuales[index] ? '' : 'd-none'}
+                                >
                                     <Divider />
-                                    <Typography>
-                                        <Title level={2}>{e.title}</Title>
+                                    <Typography className='center'>
+                                        <Title level={2}>Manual de {e.title}</Title>
                                     </Typography>
                                     {e.component}
                                 </div>

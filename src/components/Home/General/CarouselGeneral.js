@@ -10,7 +10,7 @@ const data = [
     {
         key: '1',
         name: 'Extensión web',
-        info: 'Es la responsable de la recolepcción de la información de la navegación.',
+        info: 'Es la responsable de la recolección de la información de la navegación.',
     },
     {
         key: '2',
@@ -94,9 +94,9 @@ const CarouselGeneral = () => {
                             <Typography>
                                 <Title level={2}>¿Cómo funciona Vigilantt?</Title>
                                 <Paragraph className='txt-ct'>
-                                    Vigilantt se compone de diversos modulos para
+                                    Vigilantt se compone de diversos módulos para
                                     supervisar el contenido visitado durante la navegación
-                                    web. Los modulos son los siguientes:
+                                    web. Los módulos son los siguientes:
                                 </Paragraph>
                                 <List
                                     className='txt-ct'
@@ -127,7 +127,7 @@ const CarouselGeneral = () => {
                                     devuelto por el clasificador. Este mismo tiene
                                     etiquetas que le dan un valor necesario para brindar
                                     un mejor contexto sobre el mismo contenido. Las
-                                    etiquetas pueden ser alguna(s) las siguentes :
+                                    etiquetas pueden ser alguna(s) las siguientes:
                                 </Paragraph>
 
                                 <Tag color='magenta'>Vulgar</Tag>
@@ -144,7 +144,7 @@ const CarouselGeneral = () => {
                                 <Paragraph className='txt-ct'>
                                     Para un mejor y más claro manejo de la información el
                                     contenido clasificado es divido en segmentos del
-                                    contenido, esto para mostrar casos especificos.
+                                    contenido, esto para mostrar casos específicos.
                                 </Paragraph>
                                 <Paragraph className='txt-ct'>
                                     Los segmentos podrán pertenecer a uno o más grupos a
@@ -165,11 +165,11 @@ const CarouselGeneral = () => {
                                 <Title level={2}>¿Cómo se clasifican los datos?</Title>
                                 <Paragraph className='txt-ct'>
                                     El etiquetado de la información es un proceso
-                                    necesario y de vital importacia para el correcto
+                                    necesario y de vital importancia para el correcto
                                     funcionamiento del sistema y la identificación de
                                     incidencias. El contenido clasificado puede verse en
                                     la sección de registro. Por lo tanto, para la
-                                    clasificacion de los datos se uso el siguiente
+                                    clasificación de los datos se usó el siguiente
                                     diagrama.
                                 </Paragraph>
                             </Typography>

@@ -35,13 +35,13 @@ export default function DescripcionDeFuncionamiento() {
             id: '104',
             title: 'Clasificar contenido',
             description:
-                'Una vez la extensión web recopilé el texto de la página web visitada se enviara al servidor de la plataforma el cual mandara el texto por partes al clasificador entrenado con técnicas de procesamiento de lenguaje natural para devolver un resultado de clasificación al servidor central.',
+                'Una vez la extensión web recopilé el texto de la página web visitada se enviará al servidor de la plataforma el cual mandará el texto por partes al clasificador entrenado con técnicas de procesamiento de lenguaje natural para devolver un resultado de clasificación al servidor central.',
         },
         {
             id: '105',
             title: 'Guardar contenido',
             description:
-                'Cuando el servidor central reciba los resultados de la clasificación si alguna sección del texto tiene etiquetas de texto vulgar, agresivo u ofensivo se contara como una incidencia, para que los resultados se guarden en el área de registros, se deberá tener las mismas o mayores incidencias de la configuración dada.',
+                'Cuando el servidor central reciba los resultados de la clasificación si alguna sección del texto tiene etiquetas de texto vulgar, agresivo u ofensivo se contará como una incidencia, para que los resultados se guarden en el área de registros, se deberá tener las mismas o mayores incidencias de la configuración dada.',
         },
     ];
 

@@ -86,19 +86,17 @@ export const SegmentoDeContenido = ({ contenido }) => {
     return (
         <>
             <Layout>
-                <Row>
-                    <Col span={8} offset={8}>
+                <Row className='center'>
+                    <Col>
                         <center>
-                            <p>
-                                <b>Contenido: </b>
-                            </p>
+                            <h3>Contenido:</h3>
                             <Title italic level={4}>
                                 {contenido !== null ? contenido.contenido : ''}
                             </Title>
                         </center>
                     </Col>
                 </Row>
-
+                <Divider />
                 <Row>
                     <Col span={12}>
                         <center>
@@ -125,22 +123,18 @@ export const SegmentoDeContenido = ({ contenido }) => {
                         El contenido de esta pagina en su mayoria usted la considera:
                         <center>
                             <div className='switch'>
-                                <div className='checkSeparation'>
-                                    Vulgar：{' '}
+                                <div className='mg-10' style={{ margin: '5px 5px' }}>
+                                    Vulgar:
                                     <Switch
                                         checked={vulgarCheck}
                                         onChange={toggleVulgarCheck}
-                                    />
-                                </div>
-                                <div className='checkSeparation'>
-                                    Agresivo{' '}
+                                    />{' '}
+                                    Agresivo:
                                     <Switch
                                         checked={agresivoCheck}
                                         onChange={toggleAgresivoCheck}
-                                    />
-                                </div>
-                                <div className='checkSeparation'>
-                                    Ofensivo：{' '}
+                                    />{' '}
+                                    Ofensivo:
                                     <Switch
                                         checked={ofensivoCheck}
                                         onChange={toggleOfensivoCheck}

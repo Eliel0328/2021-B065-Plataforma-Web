@@ -3,7 +3,11 @@ import { Button, Typography, Card } from 'antd';
 import { DatePicker } from 'antd';
 import alertTopEnd from '../../helpers/alertTopEnd';
 import { DashboardContext } from '../../context/DashboardContext';
-import { BarChartOutlined, ClockCircleOutlined, FieldTimeOutlined } from '@ant-design/icons';
+import {
+    BarChartOutlined,
+    ClockCircleOutlined,
+    FieldTimeOutlined,
+} from '@ant-design/icons';
 import GraficaTiempoDeConexion from './GraficaTiempoDeConexion';
 import addDays from '../../helpers/addDays';
 import disabledDate from '../../helpers/disabledDate';
@@ -52,7 +56,6 @@ export const TiempoDeConexion = () => {
             <div className='site-card-border-less-wrapper'>
                 <Card
                     bordered={false}
-                    hoverable={true}
                     style={{
                         width: 800,
                         minHeight: 500,
@@ -61,10 +64,8 @@ export const TiempoDeConexion = () => {
                     <center>
                         <Title level={4}>Tiempo de Conexion</Title>
                         <p>
-                            Seleccion la fecha para ver el tipo de incidencias registradas
-                            durante ese dia. Para revisar en profunidad estas incidencias
-                            debe ingresar al registro y revisar el registro usando los
-                            filtros para la fecha.
+                            Selecciona para revisar el tiempo de conexión semanal de la
+                            extensión.
                         </p>
 
                         <DatePicker
@@ -80,8 +81,8 @@ export const TiempoDeConexion = () => {
                         {data === null ? (
                             <div className='middle-center'>
                                 <center>
-                                    <Title level={5}>Buscar Incidencias por semana</Title>
-                                    <FieldTimeOutlined 
+                                    <Title level={5}>Buscar Tiempo de Conexión</Title>
+                                    <FieldTimeOutlined
                                         style={{
                                             fontSize: '100px',
                                             color: '#08c',

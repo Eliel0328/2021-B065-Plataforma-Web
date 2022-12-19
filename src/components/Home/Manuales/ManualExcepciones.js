@@ -12,9 +12,11 @@ export default function ManualExcepciones() {
     const [current, setCurrent] = useState(0);
 
     const next = () => {
+        document.getElementById('manual').parentElement.parentElement.scrollIntoView();
         setCurrent(current + 1);
     };
     const prev = () => {
+        document.getElementById('manual').parentElement.parentElement.scrollIntoView();
         setCurrent(current - 1);
     };
 
@@ -52,7 +54,7 @@ export default function ManualExcepciones() {
     ];
 
     return (
-        <div className='scroll_div' style={{ paddingBottom: 20 }}>
+        <div className='scroll_div' style={{ paddingBottom: 20 }} id='manual'>
             <div className='mg-10'>
                 Las excepciones y los sitios No Permitidos complementan las funciones
                 disponibles del sistema y evitan mostrar información extra que podria
@@ -128,7 +130,7 @@ const AgregarPagina = () => {
             <p>Dar clic en la opción de agregar página.</p>
             <Divider />
             <Typography className='txt-ct'>
-                Con el tipo de lista seleccionado, se debe seleccionar el boton que
+                Con el tipo de lista seleccionado, se debe seleccionar el botón que
                 aparece en el inicio de la lista.
             </Typography>
             <div style={{ marginTop: 30 }} align='center'>
@@ -175,11 +177,9 @@ const AgregarNoPermitida = () => {
             <Typography className='txt-ct'>
                 Se desplegará un modal en el que se debe ingresar la dirección de la
                 página (de esta se extrae el dominio) con lo que se puede filtrar los
-                siguientes contenidos provenientes de esta dirección. Ademas, se debe
-                ingresar una breve descripcion del porque este sitio se considera un sitio
-                No Permitido. Si lo desea también es posible dar una etiqueta al sitio. La
-                información de los sitios no permitidos visitados podran verse en la
-                sección del tutor.
+                siguientes contenidos provenientes de esta dirección. Además, se debe
+                ingresar una breve descripción del porque este sitio se considera una
+                Excepción.
             </Typography>
             <div style={{ marginTop: 30 }} align='center'>
                 <Image

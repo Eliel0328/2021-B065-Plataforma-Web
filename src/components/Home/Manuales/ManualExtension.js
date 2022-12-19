@@ -16,9 +16,11 @@ export default function ManualExtension() {
     const [current, setCurrent] = useState(0);
 
     const next = () => {
+        document.getElementById('manual').parentElement.parentElement.scrollIntoView();
         setCurrent(current + 1);
     };
     const prev = () => {
+        document.getElementById('manual').parentElement.parentElement.scrollIntoView();
         setCurrent(current - 1);
     };
 
@@ -26,7 +28,7 @@ export default function ManualExtension() {
         {
             id: '100',
             title: 'Paso 1',
-            description: 'Prerequisitos',
+            description: 'Prerrequisitos',
             content: <Prerequisitos />,
         },
         {
@@ -44,13 +46,13 @@ export default function ManualExtension() {
         {
             id: '103',
             title: 'Paso 4',
-            description: 'Ingresar al navegador',
+            description: 'Ingresar al Navegador',
             content: <IngresarNavegador />,
         },
         {
             id: '104',
             title: 'Paso 5',
-            description: 'Activar el modo desarrollador',
+            description: 'Activar el Modo Desarrollador',
             content: <ModoDesarrollador />,
         },
         {
@@ -68,7 +70,7 @@ export default function ManualExtension() {
     ];
 
     return (
-        <div className='scroll_div' style={{ paddingBottom: 20 }}>
+        <div className='scroll_div' style={{ paddingBottom: 20 }} id='manual'>
             <div className='mg-10'>
                 El proceso para instalar la Extensión Web es el siguiente:
             </div>
@@ -106,7 +108,11 @@ export default function ManualExtension() {
                 {current === data.length - 1 && (
                     <Button
                         type='primary'
-                        onClick={() => message.success('Manual de Instalación de Extensión Revisado!')}
+                        onClick={() =>
+                            message.success(
+                                'Manual de Instalación de Extensión Revisado!'
+                            )
+                        }
                     >
                         Terminado
                     </Button>
@@ -124,7 +130,7 @@ const Prerequisitos = () => {
                 siguientes:
             </p>
             <Divider />
-            <p>• Navegador compatible con google Chrome.</p>
+            <p>• Navegador compatible con Google Chrome.</p>
 
             <Image preview={false} width={70} src={brave} />
             <Image preview={false} width={90} src={chrome} />
@@ -147,7 +153,7 @@ const Descarga = () => {
                     href='https://github.com/Eliel0328/2021-B065-Extension'
                     target='_blank'
                 >
-                    Extension Web
+                    Extensión Web
                 </a>{' '}
                 usando la opción de
                 <Text keyboard>Download ZIP</Text>
@@ -183,8 +189,8 @@ const IngresarNavegador = () => {
             <p>Acceda a la configuración del navegador.</p>
             <Divider />
             <Typography>
-                Ingrese al navegador(compatible con Chrome) donde desea instalar la
-                extensión web. En una nueva pestaña, sobre la barra de busqueda ingrese la
+                Ingrese al navegador (compatible con Chrome) donde desea instalar la
+                extensión web. En una nueva pestaña, sobre la barra de búsqueda ingrese la
                 siguiente dirección. <Text keyboard>chrome://extensions/</Text>
             </Typography>
             <div style={{ marginTop: 30 }} align='center'>
@@ -233,7 +239,7 @@ const ActivarExtension = () => {
             <Typography>
                 Se nos mostrara la opción de subir la extensión para lo cual debemos
                 seleccionar la carpeta del archivo descomprimido. Al finalizar esta acción
-                podra ver la extension con el resto de extensiones disponibles en el
+                podrá ver la extensión con el resto de las extensiones disponibles en el
                 navegador.
             </Typography>
             <div style={{ marginTop: 30 }} align='center'>

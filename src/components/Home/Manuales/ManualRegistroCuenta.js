@@ -7,9 +7,11 @@ export default function ManualRegistroCuenta() {
     const [current, setCurrent] = useState(0);
 
     const next = () => {
+        document.getElementById('manual').parentElement.parentElement.scrollIntoView();
         setCurrent(current + 1);
     };
     const prev = () => {
+        document.getElementById('manual').parentElement.parentElement.scrollIntoView();
         setCurrent(current - 1);
     };
 
@@ -23,10 +25,10 @@ export default function ManualRegistroCuenta() {
     ];
 
     return (
-        <div className='scroll_div' style={{ paddingBottom: 20 }}>
+        <div className='scroll_div' style={{ paddingBottom: 20 }} id='manual'>
             <div className='mg-10'>
                 El proceso del registro de una cuenta debe ser realizado desde la
-                plataforma y consta un unico paso.
+                plataforma y consta un único paso.
             </div>
             <Steps direction='horizontal' current={current} progressDot>
                 {data.map((item, index) => (
@@ -85,10 +87,10 @@ const RellenarFormulario = () => {
             <ul>
                 <li>Nombre(s)</li>
                 <li>Apellido(s)</li>
-                <li>Correo personal (no viculado a otra cuenta)</li>
+                <li>Correo personal (no vinculado a otra cuenta)</li>
                 <li>
-                    Contraseña (debe tener al menos 8 caracteres, una minuscula,
-                    mayuscula, número y caracter especial)
+                    Contraseña (debe tener al menos 8 caracteres, una minúscula,
+                    mayúscula, número y carácter especial).
                 </li>
             </ul>
             <Typography className='txt-ct'>

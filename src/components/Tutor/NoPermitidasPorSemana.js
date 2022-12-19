@@ -52,7 +52,6 @@ export const NoPermitidasPorSemana = () => {
             <div className='site-card-border-less-wrapper'>
                 <Card
                     bordered={false}
-                    hoverable={true}
                     style={{
                         width: 800,
                         minHeight: 500,
@@ -61,10 +60,9 @@ export const NoPermitidasPorSemana = () => {
                     <center>
                         <Title level={4}>Sitios no Permitidos</Title>
                         <p>
-                            Seleccion la fecha para ver el tipo de incidencias registradas
-                            durante ese dia. Para revisar en profunidad estas incidencias
-                            debe ingresar al registro y revisar el registro usando los
-                            filtros para la fecha.
+                            Selecciona la fecha para ver las visitas a sitios no
+                            permitidos por día. Los sitios aquí mostrados son los que se
+                            registraron en la sección de Excepciones.
                         </p>
 
                         <DatePicker
@@ -79,8 +77,8 @@ export const NoPermitidasPorSemana = () => {
                         {data === null ? (
                             <div className=''>
                                 <center>
-                                    <Title level={5}>Buscar Tipo de Incidencias</Title>
-                                    <CloseCircleOutlined 
+                                    <Title level={5}>Buscar Visitas a Sitios No Permitidos</Title>
+                                    <CloseCircleOutlined
                                         style={{
                                             fontSize: '100px',
                                             color: '#08c',

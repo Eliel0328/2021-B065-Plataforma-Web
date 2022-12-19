@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import {  Button, Typography, Card, DatePicker } from 'antd';
+import { Button, Typography, Card, DatePicker } from 'antd';
 import alertTopEnd from '../../helpers/alertTopEnd';
 import { DashboardContext } from '../../context/DashboardContext';
 import { FileSearchOutlined } from '@ant-design/icons';
@@ -51,7 +51,6 @@ export const IncidenciasPorSemana = () => {
             <div className='site-card-border-less-wrapper'>
                 <Card
                     bordered={true}
-                    hoverable={true}
                     style={{
                         width: 800,
                         minHeight: 500,
@@ -60,8 +59,8 @@ export const IncidenciasPorSemana = () => {
                     <center>
                         <Title level={4}>Incidencias</Title>
                         <p>
-                            Seleccion una semana para ver las incidencias registradas
-                            durante esa semana
+                            Selecciona una semana para ver las incidencias registradas
+                            durante esa semana.
                         </p>
 
                         <DatePicker
