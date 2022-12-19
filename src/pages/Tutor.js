@@ -11,6 +11,7 @@ import {
     Typography,
     Input,
     Slider,
+    Select,
 } from 'antd';
 import { LoginContext } from '../context/LoginContext';
 import alertTopEnd from '../helpers/alertTopEnd';
@@ -43,6 +44,21 @@ const layout = {
         span: 16,
     },
 };
+
+const dataPrueba = [
+    {
+        value: 'jack',
+        label: 'Jack',
+    },
+    {
+        value: 'lucy',
+        label: 'Lucy',
+    },
+    {
+        value: 'tom',
+        label: 'Tom',
+    },
+];
 
 export const Tutor = () => {
     const { tutor, getTutor, setNumeroIncidencias, setEstadoExtension } =
@@ -79,6 +95,14 @@ export const Tutor = () => {
 
     const toggleSwitchCheck = () => {
         setSwitchCheck(!switchCheck);
+    };
+
+    const onChange = (value) => {
+        console.log(`selected ${value}`);
+    };
+
+    const onSearch = (value) => {
+        console.log('search:', value);
     };
 
     if (!tutor) {
@@ -125,6 +149,25 @@ export const Tutor = () => {
                                                 initialValue={tutor.correo}
                                             >
                                                 <Input disabled={true} />
+                                            </Form.Item>
+                                            <Form.Item
+                                                name={['user', 'email']}
+                                                label='Email'
+                                                initialValue={tutor.correo}
+                                            >
+                                                <Select
+                                                    showSearch
+                                                    placeholder='Select a person'
+                                                    optionFilterProp='children'
+                                                    onChange={onChange}
+                                                    onSearch={onSearch}
+                                                    filterOption={(input, option) =>
+                                                        (option?.label ?? '')
+                                                            .toLowerCase()
+                                                            .includes(input.toLowerCase())
+                                                    }
+                                                    options={dataPrueba}
+                                                />
                                             </Form.Item>
                                         </Form>
                                     </Col>

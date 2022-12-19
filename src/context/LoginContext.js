@@ -112,7 +112,6 @@ export const LoginContextProvider = (props) => {
 
     const logoutUser = async () => {
         try {
-            // const resultado = await client.post('/login', loginData);
             removeToken();
             removeUserData();
             dispatch({ type: SET_TOKEN, payload: null });
@@ -170,6 +169,7 @@ export const LoginContextProvider = (props) => {
             // Agregr configuracion adicional
             formulario.extensionActiva = true;
             formulario.numIncidencias = 20;
+            formulario.equipos = 'Principal'
 
             const resultado = await client.post('/registrarTutor', formulario);
 
