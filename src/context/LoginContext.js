@@ -283,6 +283,43 @@ export const LoginContextProvider = (props) => {
     const setCurrent = (data) => {
         dispatch({ type: SET_CURRENT, payload: data });
     };
+
+    const updatePassword = async (data) => {
+        try {
+
+            console.log(data);
+            const aux = getUserFromLocalStorage();
+            const resultado = await client.patch('/actualizarPassword/' + aux.id, data);
+
+            console.log(resultado);
+
+            if (resultado.status === 200) {
+                alertSuccess(
+                    'Contraseña Actualizada',
+                    'La contraseña fue actualizada correctamente'
+                );
+            }
+            return 200;
+        } catch (error) {
+            console.error(error);
+            if (error.response.status === 404) {
+                if (error.response.data.msg === 'TUTOR_NO_ENCONTRADO') {
+                    alertError(
+                        'Tutor no encontrado',
+                        'Revise su conexión.<br>En caso de que el problema con el administrador'
+                    );
+                } else {
+                    alertError(
+                        'Error',
+                        'Revise su conexión.<br>En caso de que el problema con el administrador'
+                    );
+                }
+                return 404;
+            }
+            return 401;
+        }
+    };
+
     return (
         <LoginContext.Provider
             value={{
@@ -306,6 +343,7 @@ export const LoginContextProvider = (props) => {
                 setNumeroIncidencias,
                 setEstadoExtension,
                 setCurrent,
+                updatePassword,
             }}
         >
             {props.children}

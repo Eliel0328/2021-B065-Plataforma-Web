@@ -44,12 +44,10 @@ export const Registro = () => {
 
             setLoading(false);
         }, 2000);
-        console.log('Success:', values);
     };
 
     const onFinishFailed = (errorInfo) => {
         setLoading(false);
-        console.log('Failed:', errorInfo);
     };
 
     return (
