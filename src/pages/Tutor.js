@@ -137,8 +137,10 @@ export const Tutor = () => {
                                             >
                                                 <Input disabled={true} />
                                             </Form.Item>
+                                            <Form.Item className='center'>
+                                                <CambiarContraseña />
+                                            </Form.Item>
                                         </Form>
-                                        <CambiarContraseña />
                                     </Col>
                                     <Col
                                         style={{

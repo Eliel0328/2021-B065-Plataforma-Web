@@ -4,6 +4,7 @@ import {
     HomeOutlined,
     LoginOutlined,
     LogoutOutlined,
+    RetweetOutlined,
     UnorderedListOutlined,
     UserOutlined,
 } from '@ant-design/icons';
@@ -51,11 +52,6 @@ const itemsWithToken = [
         key: 'tutor',
         icon: <UserOutlined />,
     },
-    // {
-    //     label: <Link to='/recuperar'>Recuperar Contraseña</Link>,
-    //     key: 'recuperar',
-    //     icon: <RetweetOutlined />,
-    // },
     {
         label: 'Cerrar Sesión',
         key: 'cerrarSesion',
@@ -153,6 +149,10 @@ const RouterPage = () => {
                     >
                         <Routes>
                             <Route
+                                path='/resetPassword/*'
+                                element={!token ? <Recuperar /> : <Navigate to='/home' />}
+                            ></Route>
+                            <Route
                                 path='/login'
                                 element={!token ? <Login /> : <Navigate to='/home' />}
                             ></Route>
@@ -173,10 +173,6 @@ const RouterPage = () => {
                             <Route
                                 path='/perfil'
                                 element={token ? <Tutor /> : <Navigate to='/login' />}
-                            ></Route>
-                            <Route
-                                path='/recuperar'
-                                element={token ? <Recuperar /> : <Navigate to='/login' />}
                             ></Route>
                             <Route
                                 path='*'

@@ -93,7 +93,7 @@ export const LoginContextProvider = (props) => {
                         'Ingrese los datos ingresados.<br>En caso de que el problema con el administrador'
                     );
                 } else if (
-                    error.response.data.msg === 'TUTOR_NO_REGISTRADO ' ||
+                    error.response.data.msg === 'TUTOR_NO_REGISTRADO' ||
                     error.response.data.msg === 'DATOS_ERRONEOS'
                 ) {
                     alertError(
@@ -286,7 +286,6 @@ export const LoginContextProvider = (props) => {
 
     const updatePassword = async (data) => {
         try {
-
             console.log(data);
             const aux = getUserFromLocalStorage();
             const resultado = await client.patch('/actualizarPassword/' + aux.id, data);
@@ -320,6 +319,63 @@ export const LoginContextProvider = (props) => {
         }
     };
 
+    const requestResetPassword = async (data) => {
+        try {
+            console.log(data);
+            const resultado = await client.post('/requestPasswordReset/', {
+                email: data,
+                redirectUrl: 'http://localhost:3000/resetPassword',
+            });
+
+            if (resultado.status === 200) {
+                alertSuccess(
+                    'Petición realizada',
+                    'Se envio un correo a la dirección ingresada'
+                );
+            }
+
+            return 200;
+        } catch (error) {
+            console.error(error);
+            if (error.response.data.msg === 'TUTOR_NO_REGISTRADO') {
+                alertError(
+                    'Correo no registrado',
+                    'Revise su conexión.<br>En caso de que el problema con el administrador'
+                );
+            } else {
+                alertError(
+                    'Error',
+                    'Revise su conexión.<br>En caso de que el problema con el administrador'
+                );
+            }
+            return 400;
+        }
+    };
+
+    const resetPassword = async (data) => {
+        try {
+            console.log(data);
+            const resultado = await client.post('/passwordReset/', data);
+
+            console.log(resultado);
+
+            if (resultado.status === 200) {
+                alertSuccess(
+                    'Contraseña Actualizada',
+                    'La contraseña fue actualizada correctamente'
+                );
+            }
+            return 200;
+        } catch (error) {
+            console.error(error);
+            alertError(
+                'Error',
+                'Revise su conexión.<br>En caso de que el problema con el administrador'
+            );
+            return 400;
+        }
+    };
+
     return (
         <LoginContext.Provider
             value={{
@@ -344,6 +400,8 @@ export const LoginContextProvider = (props) => {
                 setEstadoExtension,
                 setCurrent,
                 updatePassword,
+                requestResetPassword,
+                resetPassword,
             }}
         >
             {props.children}

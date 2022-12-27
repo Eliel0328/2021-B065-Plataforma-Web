@@ -4,6 +4,7 @@ import { Button, Checkbox, Col, Form, Input, Layout, Row, Space } from 'antd';
 import { Typography } from 'antd';
 import axios from 'axios';
 import { LoginContext } from '../../context/LoginContext';
+import { ResetContraseña } from './ResetContraseña';
 
 const { Title } = Typography;
 
@@ -93,17 +94,6 @@ export const IniciarSesion = () => {
                             <Input.Password />
                         </Form.Item>
 
-                        {/* <Form.Item
-                            name='remember'
-                            valuePropName='checked'
-                            wrapperCol={{
-                                offset: 8,
-                                span: 16,
-                            }}
-                        >
-                            <Checkbox>Recodar contraseña</Checkbox>
-                        </Form.Item> */}
-
                         <Form.Item
                             wrapperCol={{
                                 offset: 8,
@@ -118,6 +108,14 @@ export const IniciarSesion = () => {
                             >
                                 Iniciar Sesión
                             </Button>
+                        </Form.Item>
+                        <Form.Item
+                            wrapperCol={{
+                                offset: 8,
+                                span: 16,
+                            }}
+                        >
+                            <ResetContraseña />
                         </Form.Item>
                     </Form>
                 </Col>

@@ -1,89 +1,152 @@
-import React, { useContext, useState } from 'react';
-import {
-    Button,
-    Form,
-    Input,
-    Col,
-    Divider,
-    Layout,
-    PageHeader,
-    Row,
-} from 'antd';
-import { Content } from 'antd/lib/layout/layout';
-import alertTopEnd from '../helpers/alertTopEnd';   
+import React, { useContext, useEffect, useState } from 'react';
+
+import { Button, Checkbox, Col, Form, Input, Layout, Row, Space } from 'antd';
+import { Typography } from 'antd';
 import { LoginContext } from '../context/LoginContext';
+import alertTopEnd from '../helpers/alertTopEnd';
+import { useNavigate } from 'react-router-dom';
+
+const { Title } = Typography;
+
+const layout = {
+    labelCol: {
+        span: 8,
+    },
+    wrapperCol: {
+        span: 16,
+    },
+};
 
 export const Recuperar = () => {
-    const { recuperarContraseña } = useContext(LoginContext);
+    const { resetPassword, setCurrent } = useContext(LoginContext);
 
+    const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
+    const [form] = Form.useForm();
+    const [tutorId, setTutorId] = useState(null);
+    const [resetString, setResetString] = useState(null);
+
+    useEffect(() => {
+        let aux = window.location.pathname.split('/');
+        setTutorId(aux[2]);
+        setResetString(aux[3]);
+    }, []);
 
     const onFinish = (values) => {
-        setTimeout(() => {
+        let isCorrect = false;
+        setTimeout(async () => {
+            if (values.contraseña !== values.confirmarContraseña) {
+                form.setFields([
+                    {
+                        name: 'confirmarContraseña',
+                        errors: ['Repita la contraseña'],
+                    },
+                ]);
+                setLoading(false);
+                return null;
+            }
+
+            let aux = await resetPassword({
+                tutorId,
+                resetString,
+                newPassword: values.contraseña,
+            });
+
+            console.log(aux);
+            if (aux === 200) {
+                setTimeout(async () => {
+                    alertTopEnd('success', 'Redirigiendo', 'Será redirigido al login');
+                    navigate('/login');
+                }, 3000);
+            }
+
             setLoading(false);
-            recuperarContraseña(values.correo);
         }, 2000);
-        console.log('Success:', values);
     };
 
     const onFinishFailed = (errorInfo) => {
         setLoading(false);
         console.log('Failed:', errorInfo);
+    };
 
-        alertTopEnd(
-            'error',
-            'Correo NO valido',
-            'Ingrese una direccion de correo valida'
-        );
+    const irSeccion = (seccion) => {
+        window.scrollTo(0, 0);
     };
 
     return (
-        <Layout>
+        <div>
             <Row>
-                <Col span={12} offset={6}>
-                    <PageHeader title='Recuperar Contraseña'></PageHeader>
-                    <Divider plain></Divider>
-                    <p>Ingrese su Contraseña:</p>
-                    <Content>
-                        <Form
-                            onFinish={onFinish}
-                            onFinishFailed={onFinishFailed}
-                            labelCol={{
-                                span: 4,
-                            }}
-                            wrapperCol={{
-                                span: 14,
-                            }}
-                            layout='horizontal'
-                            size='large'
+                <Col
+                    span={12}
+                    offset={5}
+                    style={{
+                        padding: 20,
+                        paddingRight: 60,
+                        paddingLeft: 0,
+                    }}
+                >
+                    <Space
+                        direction='horizontal'
+                        style={{ width: '100%', justifyContent: 'center' }}
+                    >
+                        <Title>Iniciar Sesión</Title>
+                    </Space>
+
+                    <Form
+                        {...layout}
+                        form={form}
+                        name='iniciar_sesion'
+                        initialValues={{
+                            remember: false,
+                        }}
+                        onFinish={onFinish}
+                        onFinishFailed={onFinishFailed}
+                        autoComplete='off'
+                    >
+                        <Form.Item
+                            label='Contraseña'
+                            name='contraseña'
+                            rules={[
+                                {
+                                    required: true,
+                                    message: 'Ingrese su contraseña',
+                                },
+                            ]}
                         >
-                            <Form.Item
-                                label='Correo'
-                                name='correo'
-                                rules={[
-                                    {
-                                        required: true,
-                                        type: 'email',
-                                        message: 'Ingrese su correo electronico',
-                                    },
-                                ]}
+                            <Input.Password />
+                        </Form.Item>
+
+                        <Form.Item
+                            label='Confirmar Contraseña'
+                            name='confirmarContraseña'
+                            rules={[
+                                {
+                                    required: true,
+                                    message: 'Ingrese la confirmacion de su contraseña',
+                                },
+                            ]}
+                        >
+                            <Input.Password />
+                        </Form.Item>
+
+                        <Form.Item
+                            wrapperCol={{
+                                offset: 8,
+                                span: 16,
+                            }}
+                        >
+                            <Button
+                                type='primary'
+                                htmlType='submit'
+                                loading={loading}
+                                onClick={() => setLoading(true)}
                             >
-                                <Input placeholder='Ingrese su correo' />
-                            </Form.Item>
-                            <Form.Item>
-                                <Button
-                                    type='primary'
-                                    htmlType='submit'
-                                    loading={loading}
-                                    onClick={() => setLoading(true)}
-                                >
-                                    Enviar
-                                </Button>
-                            </Form.Item>
-                        </Form>
-                    </Content>
+                                Establecer Contraseña
+                            </Button>
+                        </Form.Item>
+                    </Form>
                 </Col>
             </Row>
-        </Layout>
+        </div>
     );
 };
