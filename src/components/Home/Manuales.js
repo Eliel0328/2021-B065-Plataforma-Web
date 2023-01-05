@@ -1,16 +1,5 @@
 import React, { useState } from 'react';
-import {
-    Button,
-    Card,
-    Col,
-    Divider,
-    Image,
-    Layout,
-    message,
-    Row,
-    Steps,
-    Typography,
-} from 'antd';
+import { Button, Card, Divider, Layout, Typography } from 'antd';
 import ManualExtension from './Manuales/ManualExtension';
 import ManualUsoExtension from './Manuales/ManualUsoExtension';
 import ManualCalificadoContenido from './Manuales/ManualCalificadoContenido';
@@ -58,7 +47,7 @@ const data = [
 ];
 
 const Manuales = () => {
-    const { Title, Paragraph, Text, Link } = Typography;
+    const { Title } = Typography;
 
     const [manuales, setManuales] = useState([
         true,

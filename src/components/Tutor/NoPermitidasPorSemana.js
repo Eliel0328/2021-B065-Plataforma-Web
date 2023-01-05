@@ -4,7 +4,7 @@ import { Button, Typography, Card } from 'antd';
 import { DatePicker } from 'antd';
 import alertTopEnd from '../../helpers/alertTopEnd';
 import { DashboardContext } from '../../context/DashboardContext';
-import { CloseCircleOutlined, SecurityScanOutlined } from '@ant-design/icons';
+import { CloseCircleOutlined } from '@ant-design/icons';
 import GraficaNoPermitidas from './GraficaNoPermitidas';
 import addDays from '../../helpers/addDays';
 import disabledDate from '../../helpers/disabledDate';
@@ -77,7 +77,9 @@ export const NoPermitidasPorSemana = () => {
                         {data === null ? (
                             <div className=''>
                                 <center>
-                                    <Title level={5}>Buscar Visitas a Sitios No Permitidos</Title>
+                                    <Title level={5}>
+                                        Buscar Visitas a Sitios No Permitidos
+                                    </Title>
                                     <CloseCircleOutlined
                                         style={{
                                             fontSize: '100px',

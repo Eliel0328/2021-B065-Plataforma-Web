@@ -14,7 +14,7 @@ const layout = {
 };
 
 export const Registro = () => {
-    const { verificarCorreo, registrarTutor } = useContext(LoginContext);
+    const { registrarTutor } = useContext(LoginContext);
 
     const [loading, setLoading] = useState(false);
     const [form] = Form.useForm();

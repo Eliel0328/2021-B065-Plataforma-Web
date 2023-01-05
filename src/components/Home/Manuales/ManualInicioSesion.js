@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Card, Divider, Image, message, Steps, Typography } from 'antd';
+import { Button, Card, Image, message, Steps, Typography } from 'antd';
 import step_1 from '../../../file/step_1.png';
 
 export default function ManualInicioSesion() {

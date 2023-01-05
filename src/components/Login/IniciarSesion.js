@@ -1,8 +1,7 @@
 import React, { useContext, useState } from 'react';
 
-import { Button, Checkbox, Col, Form, Input, Layout, Row, Space } from 'antd';
+import { Button, Col, Form, Input, Row, Space } from 'antd';
 import { Typography } from 'antd';
-import axios from 'axios';
 import { LoginContext } from '../../context/LoginContext';
 import { ResetContraseña } from './ResetContraseña';
 
@@ -41,10 +40,7 @@ export const IniciarSesion = () => {
     return (
         <div>
             <Row>
-                <Col
-                    span={12}
-                    offset={5}
-                >
+                <Col span={12} offset={5}>
                     <Space
                         direction='horizontal'
                         style={{ width: '100%', justifyContent: 'center' }}

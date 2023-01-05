@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
-import { Button, Card, Divider, Image, message, Steps, Typography } from 'antd';
+import { Button, Card, Divider, Image, message, Steps } from 'antd';
 import step_7 from '../../../file/manual_extension/step_7.png';
 import step_8 from '../../../file/manual_extension/step_8.png';
 import step_9 from '../../../file/manual_extension/step_9.png';
-
-const { Text } = Typography;
 
 export default function ManualUsoExtension() {
     const { Step } = Steps;

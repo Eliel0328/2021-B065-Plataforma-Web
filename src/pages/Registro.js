@@ -18,10 +18,11 @@ const Registro = () => {
                                 }}
                             >
                                 <p>
-                                    Aquí encontraras un listado de las incidencias que nuestro
-                                    sistema detecto como ofensivas, vulgares y/o agresivas.<br></br>
-                                    Para más información de cada incidencia, has clic en ver
-                                    contenido en cada incidencia.
+                                    Aquí encontraras un listado de las incidencias que
+                                    nuestro sistema detecto como ofensivas, vulgares y/o
+                                    agresivas.<br></br>
+                                    Para más información de cada incidencia, has clic en
+                                    ver contenido en cada incidencia.
                                 </p>
                             </Paragraph>
                         </PageHeader>

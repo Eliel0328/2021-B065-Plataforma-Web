@@ -1,30 +1,12 @@
-import React, { useContext, useEffect, useState } from 'react';
-import {
-    Col,
-    Divider,
-    Layout,
-    Row,
-    Button,
-    Form,
-    Switch,
-    Spin,
-    Typography,
-    Input,
-    Slider,
-    Modal,
-    Radio,
-} from 'antd';
+import React, { useContext, useState } from 'react';
+import { Button, Form, Input, Modal } from 'antd';
 import { LoginContext } from '../../context/LoginContext';
-
-const { Content } = Layout;
-const { confirm } = Modal;
-const { Title } = Typography;
 
 export const ResetContraseña = () => {
     const { requestResetPassword } = useContext(LoginContext);
     const [loading, setLoading] = useState(false);
     const [form] = Form.useForm();
- 
+
     const onFinish = (values) => {
         setTimeout(async () => {
             let aux = await requestResetPassword(values.correo);

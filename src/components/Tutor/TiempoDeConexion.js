@@ -3,11 +3,7 @@ import { Button, Typography, Card } from 'antd';
 import { DatePicker } from 'antd';
 import alertTopEnd from '../../helpers/alertTopEnd';
 import { DashboardContext } from '../../context/DashboardContext';
-import {
-    BarChartOutlined,
-    ClockCircleOutlined,
-    FieldTimeOutlined,
-} from '@ant-design/icons';
+import { FieldTimeOutlined } from '@ant-design/icons';
 import GraficaTiempoDeConexion from './GraficaTiempoDeConexion';
 import addDays from '../../helpers/addDays';
 import disabledDate from '../../helpers/disabledDate';

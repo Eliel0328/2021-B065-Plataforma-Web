@@ -83,7 +83,7 @@ const settings = {
 };
 
 const CarouselGeneral = () => {
-    const { Title, Paragraph, Text, Link } = Typography;
+    const { Title, Paragraph } = Typography;
 
     return (
         <>

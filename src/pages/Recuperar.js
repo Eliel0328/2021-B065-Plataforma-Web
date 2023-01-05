@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 
-import { Button, Checkbox, Col, Form, Input, Layout, Row, Space } from 'antd';
+import { Button, Col, Form, Input, Row, Space } from 'antd';
 import { Typography } from 'antd';
 import { LoginContext } from '../context/LoginContext';
 import alertTopEnd from '../helpers/alertTopEnd';
@@ -18,7 +18,7 @@ const layout = {
 };
 
 export const Recuperar = () => {
-    const { resetPassword, setCurrent } = useContext(LoginContext);
+    const { resetPassword } = useContext(LoginContext);
 
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
@@ -33,7 +33,6 @@ export const Recuperar = () => {
     }, []);
 
     const onFinish = (values) => {
-        let isCorrect = false;
         setTimeout(async () => {
             if (values.contraseña !== values.confirmarContraseña) {
                 form.setFields([
@@ -67,10 +66,6 @@ export const Recuperar = () => {
     const onFinishFailed = (errorInfo) => {
         setLoading(false);
         console.log('Failed:', errorInfo);
-    };
-
-    const irSeccion = (seccion) => {
-        window.scrollTo(0, 0);
     };
 
     return (

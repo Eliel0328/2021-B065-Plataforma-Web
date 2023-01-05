@@ -5,7 +5,6 @@ import step_2 from '../../../file/tutor/step_2.png';
 import step_3 from '../../../file/tutor/step_3.png';
 import step_4 from '../../../file/tutor/step_4.png';
 import step_5 from '../../../file/tutor/step_5.png';
-const { Text } = Typography;
 
 export default function ManualTutor() {
     const { Step } = Steps;
