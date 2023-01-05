@@ -324,7 +324,7 @@ export const LoginContextProvider = (props) => {
             console.log(data);
             const resultado = await client.post('/requestPasswordReset/', {
                 email: data,
-                redirectUrl: 'http://localhost:3000/resetPassword',
+                redirectUrl: 'http://vigilantt.tk/resetPassword',
             });
 
             if (resultado.status === 200) {
