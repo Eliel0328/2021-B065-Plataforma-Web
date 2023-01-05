@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Button, Checkbox, Col, Form, Input, Layout, Row, Space } from 'antd';
+import { Button, Checkbox, Col, Form, Input, Row, Space } from 'antd';
 import { Typography } from 'antd';
 import { LoginContext } from '../../context/LoginContext';
 const { Title } = Typography;
@@ -20,6 +20,7 @@ export const Registro = () => {
     const [form] = Form.useForm();
 
     const onFinish = (values) => {
+        console.log(values);
         setTimeout(async () => {
             if (values.contraseña !== values.confirmarContraseña) {
                 form.setFields([
@@ -50,18 +51,22 @@ export const Registro = () => {
         setLoading(false);
     };
 
+    const onButtonClick = () => {
+        fetch('Politica_de_Privacidad.pdf').then((response) => {
+            response.blob().then((blob) => {
+                const fileURL = window.URL.createObjectURL(blob);
+                let alink = document.createElement('a');
+                alink.href = fileURL;
+                alink.download = 'Politica_de_Privacidad.pdf';
+                alink.click();
+            });
+        });
+    };
+
     return (
         <div>
             <Row>
-                <Col
-                    span={12}
-                    offset={5}
-                    style={{
-                        padding: 20,
-                        paddingRight: 60,
-                        paddingLeft: 0,
-                    }}
-                >
+                <Col span={12} offset={5}>
                     <Space
                         direction='horizontal'
                         style={{ width: '100%', justifyContent: 'center' }}
@@ -132,7 +137,7 @@ export const Registro = () => {
                         </Form.Item>
 
                         <Form.Item
-                            label='Confirmar Contraseña'
+                            label='Confirmar'
                             name='confirmarContraseña'
                             rules={[
                                 {
@@ -145,13 +150,30 @@ export const Registro = () => {
                         </Form.Item>
 
                         <Form.Item
-                            name='remember'
-                            valuePropName='checked'
                             wrapperCol={{
                                 offset: 8,
                                 span: 16,
                             }}
-                        ></Form.Item>
+                        >
+                            <Button onClick={onButtonClick}>Aviso de Privacidad</Button>
+                        </Form.Item>
+
+                        <Form.Item
+                            wrapperCol={{
+                                offset: 8,
+                                span: 16,
+                            }}
+                            name='privacidad'
+                            valuePropName='checked'
+                            rules={[
+                                {
+                                    required: true,
+                                    message: 'Acepte los terminos y condiciones',
+                                },
+                            ]}
+                        >
+                            <Checkbox>Acepto términos y condiciones</Checkbox>
+                        </Form.Item>
 
                         <Form.Item
                             wrapperCol={{

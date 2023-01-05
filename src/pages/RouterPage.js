@@ -1,14 +1,13 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import {
     ExceptionOutlined,
     HomeOutlined,
     LoginOutlined,
     LogoutOutlined,
-    RetweetOutlined,
     UnorderedListOutlined,
     UserOutlined,
 } from '@ant-design/icons';
-import { Menu, Layout, Image } from 'antd';
+import { Menu, Layout } from 'antd';
 import { BrowserRouter as Router, Routes, Route, Link, Navigate } from 'react-router-dom';
 import Registro from './Registro';
 import Login from './Login';

@@ -11,14 +11,11 @@ import {
     Typography,
     Input,
     Slider,
-    Modal,
-    Radio,
-    Collapse,
 } from 'antd';
 import { LoginContext } from '../context/LoginContext';
 import alertTopEnd from '../helpers/alertTopEnd';
 import '../css/basicStyle.css';
-import { ExclamationCircleFilled, LoadingOutlined } from '@ant-design/icons';
+import { LoadingOutlined } from '@ant-design/icons';
 import setGreet from '../helpers/setGreet';
 import { IncidenciasPorSemana } from '../components/Tutor/IncidenciasPorSemana';
 import { DashboardContextProvider } from '../context/DashboardContext';
@@ -27,15 +24,7 @@ import { TipoIncidencias } from '../components/Tutor/TipoIncidencias';
 import { TiempoDeConexion } from '../components/Tutor/TiempoDeConexion';
 import { CambiarContraseña } from '../components/Tutor/CambiarContraseña';
 const { Content } = Layout;
-const { confirm } = Modal;
 const { Title } = Typography;
-const { Panel } = Collapse;
-
-const text = `
-  A dog is a type of domesticated animal.
-  Known for its loyalty and faithfulness,
-  it can be found as a welcome guest in many households across the world.
-`;
 
 const antIcon = (
     <LoadingOutlined

@@ -1,17 +1,5 @@
 import React, { useContext } from 'react';
-import {
-    Button,
-    Card,
-    Carousel,
-    Col,
-    Divider,
-    Image,
-    Layout,
-    List,
-    Row,
-    Tag,
-    Typography,
-} from 'antd';
+import { Button, Carousel, Col, Image, List, Row, Typography } from 'antd';
 import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 import '../../../css/basicStyle.css';
 import chrome from '../../../file/navegadores/chrome.png';
@@ -21,7 +9,7 @@ import opera from '../../../file/navegadores/opera.png';
 import cap_registro from '../../../file/vistas/registro.png';
 import cap_excepciones from '../../../file/vistas/excepciones.png';
 import cap_tutor from '../../../file/vistas/tutor.png';
-import { Link, Navigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { LoginContext } from '../../../context/LoginContext';
 
 const data = [

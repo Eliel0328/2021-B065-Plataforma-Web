@@ -44,11 +44,6 @@ export const IniciarSesion = () => {
                 <Col
                     span={12}
                     offset={5}
-                    style={{
-                        padding: 20,
-                        paddingRight: 60,
-                        paddingLeft: 0,
-                    }}
                 >
                     <Space
                         direction='horizontal'
